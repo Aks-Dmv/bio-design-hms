@@ -1,2 +1,4 @@
 streamlit
-openai
+langchain_openai
+langchain
+langchain-community
