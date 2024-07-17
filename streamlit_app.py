@@ -19,9 +19,9 @@ import json
 import os
 import csv
 
-__import__('pysqlite3')
-import sys
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+# __import__('pysqlite3')
+# import sys
+# sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 # import gspread
 # from oauth2client.service_account import ServiceAccountCredentials
