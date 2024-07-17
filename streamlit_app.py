@@ -29,7 +29,7 @@ import csv
 
 
 observations_csv = "observations.csv"
-OPENAI_API_KEY = "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"
+OPENAI_API_KEY = st.secrets["openai_key"]
 
 
 if 'observation' not in st.session_state:
