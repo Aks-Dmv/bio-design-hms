@@ -2,3 +2,4 @@ streamlit
 langchain_openai
 langchain
 langchain-community
+pysqlite3-binary
