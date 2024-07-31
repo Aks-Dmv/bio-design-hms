@@ -147,10 +147,10 @@ def addToGoogleSheets(observation_dict):
 
 def embedObservation(observer, observation, observation_summary, observation_date):
     db = PineconeVectorStore(
-            index_name="demo-v1",
+            index_name=st.secrets["pinecone-keys"]["index_to_connect"],
             namespace="observations",
             embedding=OpenAIEmbeddings(api_key=OPENAI_API_KEY),
-            pinecone_api_key=st.secrets["pinecone-keys"]["index_to_connect"],
+            pinecone_api_key=st.secrets["pinecone-keys"]["api_key"],
         )
     
     db.add_texts([observation], metadatas=[{'observer': observer}])
