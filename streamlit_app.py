@@ -22,13 +22,15 @@ def main():
     password = st.text_input("Password:", type="password", key="password")
     stay_logged_in = st.checkbox("Stay logged in")
 
+    user_list = st.secrets["login-credentials"]
+
     if st.button("Submit"):
-        if username == "ana" and password == "123":
-            st.success("Login successful")
-            st.session_state["login_status"] = "success"
-            st.rerun()
-        else:
-            st.error("Try again please")
+        for user_dict in user_list:
+            if username == user_dict["username"] and password == user_dict["password"]:
+                st.success("Login successful")
+                st.session_state["login_status"] = "success"
+                st.rerun()
+        st.error("Try again please")
 
 if __name__ == "__main__":
     st.set_page_config(initial_sidebar_state="collapsed")

@@ -1,1 +1,4 @@
-observer;observation;date;location;people_present;sensory_observations;specific_facts;insider_language;process_actions;summary_of_observation;questions
+observation_title;observer;observation;observation_date;date;location;people_present;sensory_observations;specific_facts;insider_language;process_actions;summary_of_observation;questions
+Observation: The provided text appears to be nonsensical or a typographical error.;Ana;sadfnds lksjf sdf;2024-07-30;;;;;;;
+Observation Summary: Testing of a new procedure or method is in progress.;Ana;I am testing this out.;2024-07-30;;;;;;;
+The observation mentions the introduction of new OpenAI embeddings.;Ana;New open ai embeddings;2024-07-30;;;;New open ai embeddings;;;
