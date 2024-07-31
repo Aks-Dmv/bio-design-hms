@@ -6,3 +6,4 @@ pinecone-client
 gspread
 oauth2client
 langchain_pinecone
+streamlit-extras
