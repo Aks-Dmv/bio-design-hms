@@ -33,10 +33,10 @@ def askObservations(question):
     )
 
     db = PineconeVectorStore(
-            index_name="demo-v1",
+            index_name=st.secrets["pinecone-keys"]["index_to_connect"],
             namespace="observations",
             embedding=OpenAIEmbeddings(api_key=OPENAI_API_KEY),
-            pinecone_api_key=st.secrets["pinecone-keys"]["index_to_connect"],
+            pinecone_api_key=st.secrets["pinecone-keys"]["api_key"],
         )
     
     related_observations = db.similarity_search(question, k=10)
