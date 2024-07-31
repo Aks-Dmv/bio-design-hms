@@ -167,7 +167,7 @@ def embedObservation(observer, observation, observation_summary, observation_dat
     csv_writer = csv.writer(csv_file, delimiter=";")
     csv_writer.writerow(observation_values)
 
-    # status = addToGoogleSheets(observation_dict)
+    status = True # addToGoogleSheets(observation_dict)
 
     return status
 
