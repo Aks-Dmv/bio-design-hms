@@ -31,6 +31,12 @@ st.markdown("# Add New Observation")
 observations_csv = "observations.csv"
 OPENAI_API_KEY = st.secrets["openai_key"]
 
+# Access the credentials from Streamlit secrets
+creds_json = st.secrets["google"]["credentials"]
+
+# Convert JSON string to dictionary
+creds_dict = json.loads(creds_json)
+
 
 if 'observation' not in st.session_state:
     st.session_state['observation'] = ""
@@ -120,7 +126,7 @@ def addToGoogleSheets(observation_dict):
         "https://www.googleapis.com/auth/spreadsheets",
         "https://www.googleapis.com/auth/drive.metadata.readonly"
         ]
-        creds = ServiceAccountCredentials.from_json_keyfile_name('awesome-nucleus-135623-eeaf5d0be309.json', scope)
+        creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
         client = gspread.authorize(creds)
         observation_sheet = client.open("BioDesign Observation Record").sheet1
 
@@ -167,7 +173,7 @@ def embedObservation(observer, observation, observation_summary, observation_dat
     csv_writer = csv.writer(csv_file, delimiter=";")
     csv_writer.writerow(observation_values)
 
-    status = True # addToGoogleSheets(observation_dict)
+    status = addToGoogleSheets(observation_dict)
 
     return status
 
