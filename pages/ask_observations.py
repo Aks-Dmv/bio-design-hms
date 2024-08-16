@@ -66,7 +66,7 @@ if prompt := st.chat_input("What would you like to ask?"):
     )
 
     with get_openai_callback() as cb:
-        output = observation_chat_chain.invoke({"question": question, "related_observations": related_observations})
+        output = observation_chat_chain.invoke({"question": prompt, "related_observations": related_observations})
 
     # Update the conversation history
     st.session_state.messages.append({"role": "assistant", "content": output})
