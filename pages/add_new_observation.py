@@ -160,7 +160,7 @@ def addToGoogleSheets(observation_dict):
         print("Error adding to Google Sheets: ", e)
         return False
 
-def embedObservation(observer, observation, observation_summary, observation_date):
+def embedObservation(observer, observation, observation_summary, observation_date, observation_id):
     db = PineconeVectorStore(
             index_name=st.secrets["pinecone-keys"]["index_to_connect"],
             namespace="observations",
@@ -168,14 +168,14 @@ def embedObservation(observer, observation, observation_summary, observation_dat
             pinecone_api_key=st.secrets["pinecone-keys"]["api_key"],
         )
     
-    db.add_texts([observation], metadatas=[{'observer': observer}])
+    db.add_texts([observation, f"observation id: {observation_id}"], metadatas=[{'observer': observer}])
 
     parsed_observation = parseObservation(observation)
 
     # write observer, observatoin and parsed observation to csv
     observation_keys = list(ObservationRecord.__fields__.keys())
-    all_observation_keys = ['observation_summary', 'observer', 'observation', 'observation_date'] + observation_keys
-    observation_values = [observation_summary, observer, observation, observation_date] + [parsed_observation[key] for key in observation_keys]
+    all_observation_keys = ['observation_summary', 'observer', 'observation', 'observation_date', 'observation_id'] + observation_keys
+    observation_values = [observation_summary, observer, observation, observation_date, observation_id] + [parsed_observation[key] for key in observation_keys]
 
     observation_dict = dict(zip(all_observation_keys, observation_values))
     csv_file = open(observations_csv, "a")
@@ -309,7 +309,8 @@ if st.button("Add Observation to Team Record"):
         )
     else:
         status = embedObservation(observer, st.session_state['observation'],  st.session_state['observation_summary'], 
-                            st.session_state['observation_date'])
+                            st.session_state['observation_date'],
+                            st.session_state['observation_id'])
         # st.session_state['observation_summary'] = st.text_input("Generated Summary (editable):", value=st.session_state['observation_summary'])
         # "Generated Summary: "+st.session_state['observation_summary']+"\n\n"
         if status:
