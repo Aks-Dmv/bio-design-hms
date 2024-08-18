@@ -42,7 +42,7 @@ SPREADSHEET = CLIENT.open("BioDesign Observation Record")  # Open the main sprea
 def create_new_chat_sheet():
     """Create a new sheet for the current chat thread."""
     chat_timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")  # Unique name based on timestamp
-    sheet = SPREADSHEET.add_worksheet(title=f"Chat_{chat_timestamp}")  # Create new sheet
+    sheet = SPREADSHEET.add_worksheet(title=f"Chat_{chat_timestamp}", rows="1", cols="2")  # Create new sheet
     sheet.append_row(["User Input", "Assistant Response"])  # Optional: Add headers
     return sheet
 
