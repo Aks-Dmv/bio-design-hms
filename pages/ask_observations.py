@@ -13,6 +13,7 @@ from langchain_pinecone import PineconeVectorStore
 
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+from datetime import datetime
 
 # Access the credentials from Streamlit secrets
 creds_dict = {
