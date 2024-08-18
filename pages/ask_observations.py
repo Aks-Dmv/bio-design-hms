@@ -11,7 +11,7 @@ from langchain.schema.runnable import RunnableLambda
 from langchain.prompts import PromptTemplate
 from langchain_pinecone import PineconeVectorStore
 
-from add_new_observation.py import creds_dict
+from add_new_observation import creds_dict
 
 # Google Sheets setup
 SCOPE = [
