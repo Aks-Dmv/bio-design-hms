@@ -11,7 +11,28 @@ from langchain.schema.runnable import RunnableLambda
 from langchain.prompts import PromptTemplate
 from langchain_pinecone import PineconeVectorStore
 
+from add_new_observation.py import creds_dict
 
+# Google Sheets setup
+SCOPE = [
+        "https://www.googleapis.com/auth/spreadsheets",
+        "https://www.googleapis.com/auth/drive.metadata.readonly"
+        ]
+CREDS = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
+CLIENT = gspread.authorize(CREDS)
+SPREADSHEET = CLIENT.open("BioDesign Observation Record")  # Open the main spreadsheet
+
+def create_new_chat_sheet():
+    """Create a new sheet for the current chat thread."""
+    chat_timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")  # Unique name based on timestamp
+    sheet = SPREADSHEET.add_worksheet(title=f"Chat_{chat_timestamp}")  # Create new sheet
+    sheet.append_row(["User Input", "Assistant Response"])  # Optional: Add headers
+    return sheet
+
+# Create a new sheet for the chat thread if not already created
+if "chat_sheet" not in st.session_state:
+    st.session_state.chat_sheet = create_new_chat_sheet()
+    
 observations_csv = "observations.csv"
 OPENAI_API_KEY = st.secrets["openai_key"]
 
@@ -74,6 +95,9 @@ if prompt := st.chat_input("What would you like to ask?"):
     # Display the response
     with st.chat_message("assistant"):
         st.markdown(output)
+
+    # Store chat in the current sheet
+    st.session_state.chat_sheet.append_row([st.session_state.messages[-2]['content'], st.session_state.messages[-1]['content']])
 
 st.markdown("---")
 if st.button("Back to Main Menu"):
