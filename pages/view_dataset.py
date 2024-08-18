@@ -26,7 +26,7 @@ st.markdown("---")
 #     st.markdown(f"**Observation:** {row['observation']}")
 #     st.markdown("---")
 
-st.markdown("---")
+# st.markdown("---")
 
 if st.button("Back to Main Menu"):
     switch_page("main_menu")
