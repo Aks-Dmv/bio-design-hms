@@ -18,13 +18,13 @@ df = pd.read_csv("observations.csv", delimiter=';')
 
 st.markdown("---")
 
-# Display each observation
-for index, row in df.iterrows():
-    st.markdown(f"### {row['observation_title']}")
-    st.markdown(f"**Date:** {row['observation_date']}")
-    st.markdown(f"**Observer:** {row['observer']}")
-    st.markdown(f"**Observation:** {row['observation']}")
-    st.markdown("---")
+# # Display each observation
+# for index, row in df.iterrows():
+#     st.markdown(f"### {row['observation_title']}")
+#     st.markdown(f"**Date:** {row['observation_date']}")
+#     st.markdown(f"**Observer:** {row['observer']}")
+#     st.markdown(f"**Observation:** {row['observation']}")
+#     st.markdown("---")
 
 st.markdown("---")
 
