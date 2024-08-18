@@ -36,7 +36,7 @@ with col2:
         switch_page("add_new_observation")
 
     if st.button("✅ Learn From Observations"):
-        switch_page("validate_observation")
+        switch_page("enhance_observation")
 
     if st.button("❓ Ask the team's Observations"):
         switch_page("ask_observations")
