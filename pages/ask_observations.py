@@ -34,7 +34,7 @@ SCOPE = [
         "https://www.googleapis.com/auth/spreadsheets",
         "https://www.googleapis.com/auth/drive.metadata.readonly"
         ]
-CREDS = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
+CREDS = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, SCOPE)
 CLIENT = gspread.authorize(CREDS)
 SPREADSHEET = CLIENT.open("BioDesign Observation Record")  # Open the main spreadsheet
 
