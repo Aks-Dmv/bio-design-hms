@@ -11,6 +11,9 @@ from langchain.schema.runnable import RunnableLambda
 from langchain.prompts import PromptTemplate
 from langchain_pinecone import PineconeVectorStore
 
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+
 # Access the credentials from Streamlit secrets
 creds_dict = {
     "type" : st.secrets["gcp_service_account"]["type"],
