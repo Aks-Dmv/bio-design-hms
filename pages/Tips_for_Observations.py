@@ -125,9 +125,9 @@ Output:"""
 
 #tips function
 
-observation_chain = (
-        observation_prompt | llm | StrOutputParser()
-)
+        observation_chain = (
+                observation_prompt | llm | StrOutputParser()
+        )
 
 for index, row in df.iterrows():
 
@@ -142,24 +142,11 @@ return output
 #     st.markdown(f"**Date:** {row['observation_date']}")
 #     st.markdown(f"**Observer:** {row['observer']}")
 #     st.markdown(f"**Observation:** {row['observation']}")
-    
-    if st.button(f"Get Tips for this Observation", key=f"tips_button_{index}"):
-        tips = get_tips_from_observation(row['observation'])
+
+if st.button(f"Get Tips for this Observation", key=f"tips_button_{index}"):
+        tips = get_tips_from_observation(selected_observation)
         st.markdown(tips)
     
-    st.markdown("---")
-
-# Use the actual column name from your Google Sheet
-observation_id = st.selectbox("Select an Observation ID", df['observation_id'])
-
-# Get the observation text based on the selected Observation ID
-selected_observation = df[df['Actual_Column_Name_Here'] == observation_id]['Observation'].values[0]
-
-
-# Display the selected observation
-st.write("Selected Observation:")
-st.write(selected_observation)
-
 st.markdown("---")
 
 # if st.button("Back to Main Menu"):
