@@ -68,7 +68,7 @@ except Exception as e:
         headers = values.pop(0)
         df = pd.DataFrame(values, columns=headers)
 
-df = pd.DataFrame(data)
+#df = pd.DataFrame(data)
 
 def get_tips_from_observation(observation):
 
