@@ -369,6 +369,7 @@ st.markdown(st.session_state['result'], unsafe_allow_html=True)
 if st.session_state['rerun']:
     time.sleep(3)
     clear_observation()
+    st.rerun()
 
 ##########
 if st.button("Add Observation to Team Record", disabled=st.session_state['observation_summary'] == ""):
