@@ -225,15 +225,36 @@ def clear_observation():
 
 # st.session_state['observation_summary'] = st.text_input("Observation Title:", value=st.session_state['observation_summary'])
 
-# st calendar for date input
-st.session_state['observation_date'] = st.date_input("Observation Date", date.today())
+# # st calendar for date input
+# st.session_state['observation_date'] = st.date_input("Observation Date", date.today())
 
-# add input called observation_id with default value of current date
-observation_id_counter = 1
-#default_observation_id = date.today().strftime("%Y%m%d")+"%03d"%observation_id_counter
-new_observation_id = st.observation_date().strftime("%Y%m%d")+"%03d"%observation_id_counter
-st.session_state['observation_id'] = st.text_input("Observation ID:", value=new_observation_id)
-#st.session_state['observation_id'] = st.text_input("Observation ID:", value=default_observation_id)
+# # add input called observation_id with default value of current date
+# observation_id_counter = 1
+# default_observation_id = date.today().strftime("%Y%m%d")+"%03d"%observation_id_counter
+# st.session_state['observation_id'] = st.text_input("Observation ID:", value=default_observation_id)
+
+# Function to generate observation ID with the format OBYYYYMMDDxxxx
+def generate_observation_id(observation_date, counter):
+    return f"OB{observation_date.strftime('%Y%m%d')}{counter:04d}"
+
+# Initialize or retrieve observation ID counter from session state
+if 'observation_id_counter' not in st.session_state:
+    st.session_state['observation_id_counter'] = 1
+
+# Function to update observation ID when the date changes
+def update_observation_id():
+    st.session_state['observation_id'] = generate_observation_id(st.session_state['observation_date'], st.session_state['observation_id_counter'])
+
+# st calendar for date input with a callback to update the observation_id
+st.session_state['observation_date'] = st.date_input("Observation Date", date.today(), on_change=update_observation_id)
+
+# Initialize observation_id based on the observation date and counter
+st.session_state['observation_id'] = st.text_input("Observation ID:", value=st.session_state['observation_id'], disabled=True)
+
+##########
+
+#new_observation_id = st.observation_date().strftime("%Y%m%d")+"%03d"%observation_id_counter
+#st.session_state['observation_id'] = st.text_input("Observation ID:", value=new_observation_id)
 
 # Textbox for name input
 observer = st.selectbox("Observer", ["Ana", "Bridget"])
