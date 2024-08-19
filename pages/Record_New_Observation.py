@@ -219,7 +219,7 @@ def generateObservationSummary(observation):
 You help me by giving me the a one line summary of the following medical observation.
 
 Observation: {observation}
-Output:"""
+Output Summary:"""
 )
 
     observation_chain = (
@@ -235,9 +235,9 @@ Output:"""
 def clear_observation():
     st.session_state['observation'] = ""
     st.session_state['observation_summary'] = ""
-    st.session_state['observation_date'] = ""
     st.session_state['result'] = ""
     st.session_state['error'] = ""
+    update_observation_id()
 
 import streamlit as st
 from datetime import date
@@ -339,38 +339,6 @@ with col3:
 # Text area for observation input
 st.session_state['observation'] = st.text_area("Add Your Observation", value=st.session_state['observation'], placeholder="Enter your observation...", height=200)
 
-# add a voice icon button
-# st.write("Voice Input")
-# st.write(st.text_input("Voice Input", type="voice")
-# Include Font Awesome
-# st.markdown(
-#     """
-#     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-#     """,
-#     unsafe_allow_html=True
-# )
-
-# Button with voice icon
-# button_html = """
-#     <style>
-#         .voice-btn {
-#             border: none;
-#             color: white;
-#             padding: 10px 10px;
-#             text-align: center;
-#             text-decoration: none;
-#             display: inline-block;
-#             font-size: 12px;
-#             margin: 1px 1px;
-#             cursor: pointer;
-#             border-radius: 8px; /* Add this line for rounded corners */
-#         }
-#     </style>
-# """
-    # <button class="voice-btn"><i class="fas fa-microphone"></i> Press to Speak (coming soon) </button>
-
-# Render the button
-# st.markdown(button_html, unsafe_allow_html=True)
 
 # Container for result display
 result_container = st.empty()
@@ -399,7 +367,7 @@ if st.session_state['observation_summary'] != "":
 st.markdown(st.session_state['result'], unsafe_allow_html=True)
 
 if st.session_state['rerun']:
-    time.sleep(5)
+    time.sleep(3)
     clear_observation()
 
 ##########
@@ -426,8 +394,9 @@ if st.button("Add Observation to Team Record", disabled=st.session_state['observ
         # st.session_state['observation_summary'] = st.text_input("Generated Summary (editable):", value=st.session_state['observation_summary'])
         # "Generated Summary: "+st.session_state['observation_summary']+"\n\n"
         if status:
-            st.session_state['result'] = "Observation added to your team's database"
+            st.session_state['result'] = "Observation added to your team's database."
             st.session_state['rerun'] = True
+            st.rerun()
         else:
             st.session_state['result'] = "Error adding observation to your team's database, try again!"
         # clear_observation()
