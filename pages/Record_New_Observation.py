@@ -403,6 +403,49 @@ if st.button("Evaluate Observation"):
 
 if st.session_state['observation_summary'] != "":
     st.session_state['observation_summary'] = st.text_area("Generated Summary (editable):", value=st.session_state['observation_summary'], height=50)
+
+# st.write(f":green[{st.session_state['result']}]")
+st.markdown(st.session_state['result'], unsafe_allow_html=True)
+
+st.markdown("---")
+
+# if st.button("Back to Main Menu"):
+#     clear_observation()
+#     switch_page("main_menu")
+
+
+# st.markdown("---")
+
+# Add custom CSS for a larger button
+st.markdown("""
+    <style>
+    .big-button-container {
+        display: flex;
+        justify-content: center;
+    }
+    .big-button {
+        font-size: 20px;
+        padding: 10px 60px;
+        background-color: #365980; /* blueish color */
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+    }
+    .big-button:hover {
+        background-color: #c2c2c2; /* Grey */
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+# Create a container to hold the button with the custom class
+st.markdown("""
+    <div class="big-button-container">
+        <button class="big-button" onclick="window.location.href='/?page=main_menu'">Back to Main Menu</button>
+    </div>
+    """, unsafe_allow_html=True)
+
     
 ###########
 # if st.button("Add Observation to Team Record", disabled=st.session_state['observation_summary'] == ""):
@@ -463,46 +506,3 @@ if st.button("Add Observation to Team Record", disabled=st.session_state['observ
     # Important: Do not place any code after st.experimental_rerun() within this block
 
 ##########
-
-# st.write(f":green[{st.session_state['result']}]")
-st.markdown(st.session_state['result'], unsafe_allow_html=True)
-
-st.markdown("---")
-
-# if st.button("Back to Main Menu"):
-#     clear_observation()
-#     switch_page("main_menu")
-
-
-# st.markdown("---")
-
-# Add custom CSS for a larger button
-st.markdown("""
-    <style>
-    .big-button-container {
-        display: flex;
-        justify-content: center;
-    }
-    .big-button {
-        font-size: 20px;
-        padding: 10px 60px;
-        background-color: #365980; /* blueish color */
-        color: white;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        text-align: center;
-    }
-    .big-button:hover {
-        background-color: #c2c2c2; /* Grey */
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
-# Create a container to hold the button with the custom class
-st.markdown("""
-    <div class="big-button-container">
-        <button class="big-button" onclick="window.location.href='/?page=main_menu'">Back to Main Menu</button>
-    </div>
-    """, unsafe_allow_html=True)
-
