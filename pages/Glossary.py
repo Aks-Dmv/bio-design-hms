@@ -87,7 +87,7 @@ def get_definition(term):
             model='gpt-4-turbo',
             messages=messages,
         )
-        definition = response.choices[0].message
+        definition = response.choices[0].message.content
     
         return definition
     except Exception as e:
@@ -96,6 +96,7 @@ def get_definition(term):
 # Display the unique terms with their counts and definitions
 st.write("Unique terms, their counts, and definitions:")
 for term, count in term_counts.items():
+    capitalized_term = term.capitalize()
     definition = get_definition(term)
-    st.write(f"- **{term}** ({count}): {definition}")
+    st.write(f"- **{capitalized_term}** ({count}): {definition}")
 
