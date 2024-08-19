@@ -62,7 +62,7 @@ try:
         
         # Select only columns 2 and 5
         # Note: Column indices in Python are 0-based, so column 2 is index 1, and column 5 is index 4.
-        df_selected = df.iloc[:, [1, 4]]  # This selects columns 2 and 5
+        df_selected = df.iloc[:, [0, 4]]  # This selects columns 2 and 5
         
         st.write(df_selected)  # Display the selected columns
 except Exception as e:
