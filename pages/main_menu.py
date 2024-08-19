@@ -37,7 +37,7 @@ st.markdown(
     f"""
     <div style="text-align: center;">
         <h1>HealthTech WayFinder</h1>
-         <img src="{logo_url}" alt="Logo" style="width:150px; height:auto;">
+         <img src="{logo_url}" alt="Logo" style="width:350px; height:auto;">
     </div>
     """,
     unsafe_allow_html=True,
