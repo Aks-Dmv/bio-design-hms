@@ -106,9 +106,11 @@ sorted_terms = sorted(term_counts.keys())
 for term in sorted_terms:
     capitalized_term = term.capitalize()
     definition = get_definition(term)
-    st.write(f"""
-- **{capitalized_term}** ({term_counts[term]}): {definition}\n__Relevant observation IDs:__ {relevant_observation_ids[term]}
-    """)
+    st.markdown(f"""
+- **{capitalized_term}** ({term_counts[capitalized_term]}): {definition}  
+  *Relevant observation IDs:*  
+  {relevant_observation_ids[capitalized_term]}
+""")
 
 
 st.markdown("---")
