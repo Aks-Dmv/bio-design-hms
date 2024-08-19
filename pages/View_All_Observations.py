@@ -2,9 +2,9 @@ import streamlit as st
 from streamlit_extras.switch_page_button import switch_page
 import pandas as pd
 
-st.set_page_config(page_title="View Observations Dataset", page_icon="📊")
+st.set_page_config(page_title="View All Observations", page_icon="📊")
 
-st.markdown("# View Observations Dataset")
+st.markdown("# All Observations")
 
 # Embedding Google Sheets using an iframe
 st.markdown("""
