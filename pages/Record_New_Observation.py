@@ -77,7 +77,7 @@ def refreshObservation():
     st.session_state['observation'] = ""
     st.session_state['result'] = ""
     st.session_state['observation_summary'] = ""
-    st.session_state['observation_date'] = date.today()
+    
 
 def parseObservation(observation: str):
     llm = ChatOpenAI(
