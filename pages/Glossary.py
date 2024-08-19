@@ -3,14 +3,16 @@ from streamlit_extras.switch_page_button import switch_page
 
 import pandas as pd
 
-# from langchain_openai import ChatOpenAI, OpenAIEmbeddings
-# from langchain.chains import LLMChain
-# from langchain.output_parsers import PydanticOutputParser
-# # from langchain.callbacks import get_openai_callback
-# from langchain.schema import StrOutputParser
-# from langchain.schema.runnable import RunnableLambda
-# from langchain.prompts import PromptTemplate
-# from langchain_pinecone import PineconeVectorStore
+import openai
+
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+from langchain.chains import LLMChain
+from langchain.output_parsers import PydanticOutputParser
+# from langchain.callbacks import get_openai_callback
+from langchain.schema import StrOutputParser
+from langchain.schema.runnable import RunnableLambda
+from langchain.prompts import PromptTemplate
+from langchain_pinecone import PineconeVectorStore
 
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
@@ -62,7 +64,28 @@ for value in column_values[1:]:
             else:
                 term_counts[term] = 1
 
-# Display the unique terms with their counts
-st.write("Unique terms and their counts:")
+# # Display the unique terms with their counts
+# st.write("Unique terms and their counts:")
+# for term, count in term_counts.items():
+#     st.write(f"- {term} ({count})")
+
+# Set up OpenAI API key
+openai.api_key = st.secrets["openai"]["api_key"]
+#OPENAI_API_KEY = st.secrets["openai_key"]
+
+# Function to get a definition from OpenAI
+def get_definition(term):
+    response = openai.Completion.create(
+        engine="text-davinci-003",
+        prompt=f"Define the following medical term: {term}",
+        max_tokens=50
+    )
+    definition = response.choices[0].text.strip()
+    return definition
+
+# Display the unique terms with their counts and definitions
+st.write("Unique terms, their counts, and definitions:")
 for term, count in term_counts.items():
-    st.write(f"- {term} ({count})")
+    definition = get_definition(term)
+    st.write(f"- **{term}** ({count}): {definition}")
+
