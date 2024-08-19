@@ -71,6 +71,7 @@ with col2:
     if st.button("📊 View All Observations"):
         switch_page("view_dataset")
 
-    st.markdown("---")
+st.markdown("---")
+    
     if st.button("Log Out"):
             switch_page("../app.py")
