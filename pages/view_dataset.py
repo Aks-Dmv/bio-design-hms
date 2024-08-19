@@ -89,9 +89,9 @@ st.markdown("""
         justify-content: center;
     }
     .big-button {
-        font-size: 20px;
-        padding: 20px 40px;
-        background-color: #4CAF50; /* Green */
+        font-size: 40px;
+        padding: 15px 60px;
+        background-color: #365980; /* blueish color */
         color: white;
         border: none;
         border-radius: 8px;
@@ -99,7 +99,7 @@ st.markdown("""
         text-align: center;
     }
     .big-button:hover {
-        background-color: #45a049; /* Darker green */
+        background-color: #c2c2c2; /* Grey */
     }
     </style>
     """, unsafe_allow_html=True)
