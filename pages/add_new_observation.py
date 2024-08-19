@@ -288,7 +288,7 @@ if st.session_state['observation_summary'] != "":
 #col1, col2, col3 = st.columns([2, 3, 3])
 
 # with col1:
-if st.button("Validate Observation"):
+if st.button("Evaluate Observation"):
     st.session_state['result'] = extractObservationFeatures(st.session_state['observation'])
 
 # with col2:
