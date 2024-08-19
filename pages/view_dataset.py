@@ -53,13 +53,6 @@ df = pd.read_csv("observations.csv", delimiter=';')
 
 # # st.markdown("---")
 
-# if st.button("Back to Main Menu"):
-#     switch_page("main_menu")
-
-# if st.button("Back to Main Menu"):
-#     switch_page("main_menu")
-
-# Add custom CSS for a larger button
 st.markdown("""
     <style>
     .big-button {
@@ -79,9 +72,16 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# Use HTML to create the bigger button
-if st.markdown('<button class="big-button">Back to Main Menu</button>', unsafe_allow_html=True):
+if st.button("Back to Main Menu"):
     switch_page("main_menu")
+
+# if st.button("Back to Main Menu"):
+#     switch_page("main_menu")
+
+
+# # Use HTML to create the bigger button
+# if st.markdown('<button class="big-button">Back to Main Menu</button>', unsafe_allow_html=True):
+#     switch_page("main_menu")
 
 
 
