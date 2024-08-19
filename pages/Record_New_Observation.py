@@ -17,7 +17,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 from pydantic import BaseModel, Field
 from typing import Optional
-from datetime import date
+from datetime import date, datetime
 
 import json
 import os
@@ -76,7 +76,7 @@ if not os.path.exists(observations_csv):
 def refreshObservation():
     st.session_state['observation'] = ""
     st.session_state['observation_summary'] = ""
-    st.session_state['observation_date'] = ""
+    st.session_state['observation_date'] = datetime.today().date()
     
 
 def parseObservation(observation: str):
