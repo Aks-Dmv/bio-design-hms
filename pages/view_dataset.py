@@ -34,7 +34,6 @@ st.markdown("---")
 st.markdown("# Go to the Observations Dataset")
 
 st.markdown("""
-
 Click the link below to open your team's observation record in Google Sheets:
 <a href="https://docs.google.com/spreadsheets/d/1wid5imrlhkXOvmpWCbZzhAUrVSTS5iNOX3JASOxtJM4/edit?usp=sharing" target="_blank">Team's Observation Record</a>
 """, unsafe_allow_html=True)
@@ -53,25 +52,25 @@ df = pd.read_csv("observations.csv", delimiter=';')
 
 # # st.markdown("---")
 
+# Add custom CSS for a larger button
 st.markdown("""
     <style>
-    .big-button {
-        font-size: 30px;
-        padding: 20px 44px;
+    div.stButton > button {
+        font-size: 20px;
+        padding: 10px 24px;
         background-color: #4CAF50; /* Green */
         color: white;
         border: none;
         border-radius: 8px;
         cursor: pointer;
-        display: inline-block;
-        margin: 10px;
     }
-    .big-button:hover {
+    div.stButton > button:hover {
         background-color: #45a049; /* Darker green */
     }
     </style>
     """, unsafe_allow_html=True)
 
+# Use Streamlit's native button for functionality
 if st.button("Back to Main Menu"):
     switch_page("main_menu")
 
