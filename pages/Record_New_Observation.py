@@ -1,3 +1,4 @@
+import time
 import streamlit as st
 from streamlit_extras.switch_page_button import switch_page
 
@@ -76,7 +77,6 @@ if not os.path.exists(observations_csv):
 def refreshObservation():
     st.session_state['observation'] = ""
     st.session_state['observation_summary'] = ""
-    st.session_state['observation_date'] = None
     
 
 def parseObservation(observation: str):
@@ -407,6 +407,10 @@ if st.session_state['observation_summary'] != "":
 # st.write(f":green[{st.session_state['result']}]")
 st.markdown(st.session_state['result'], unsafe_allow_html=True)
 
+if st.session_state['rerun']:
+    time.sleep(5)
+    st.session_state['rerun'] = False
+    st.experimental_rerun()
 
 ##########
 if st.button("Add Observation to Team Record", disabled=st.session_state['observation_summary'] == ""):
@@ -433,7 +437,7 @@ if st.button("Add Observation to Team Record", disabled=st.session_state['observ
         # "Generated Summary: "+st.session_state['observation_summary']+"\n\n"
         if status:
             st.session_state['result'] = "Observation added to your team's database"
-            refreshObservation()
+            st.session_state['rerun'] = True
         else:
             st.session_state['result'] = "Error adding observation to your team's database, try again!"
         # clear_observation()
