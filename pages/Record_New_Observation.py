@@ -130,11 +130,18 @@ def extractObservationFeatures(observation):
     for field in missing_fields:
         output += f" {field},"
 
-    # output += "\n\n"
-    # output += "="*75
-    output += "\nPlease add the missing fields to the observation if needed, then proceed with adding observation to your team record."
+    # # output += "\n\n"
+    # # output += "="*75
+    # output += "\nPlease add the missing fields to the observation if needed, then proceed with adding observation to your team record."
 
-    return f"{output}"
+    # return f"{output}"
+
+     # Add each missing field in red
+    for field in missing_fields:
+        output += f" <span style='color:red;'>{field}</span>,"
+
+    # Display the output
+    st.markdown(output, unsafe_allow_html=True)
 
 def addToGoogleSheets(observation_dict):
     try:
