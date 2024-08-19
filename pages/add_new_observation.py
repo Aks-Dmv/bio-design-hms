@@ -126,7 +126,7 @@ def extractObservationFeatures(observation):
 
     # output += "\n\n"
     # output += "="*75
-    # output += "\nPlease add the missing fields to the observation if needed, then proceed with adding observation to your team record."
+    output += "\nPlease add the missing fields to the observation if needed, then proceed with adding observation to your team record."
 
     return f"{output}"
 
