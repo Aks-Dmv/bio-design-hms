@@ -70,7 +70,8 @@ for value in column_values[1:]:
 #     st.write(f"- {term} ({count})")
 
 # Set up OpenAI API key
-openai.api_key = st.secrets["openai"]["api_key"]
+openai.api_key = st.secrets["openai_key"]
+#openai.api_key = st.secrets["openai"]["api_key"]
 #OPENAI_API_KEY = st.secrets["openai_key"]
 
 # Function to get a definition from OpenAI
