@@ -459,6 +459,9 @@ if st.button("Add Observation to Team Record", disabled=st.session_state['observ
             st.experimental_rerun()  # This will refresh the page
         else:
             st.session_state['result'] = "Error adding observation to your team's database, try again!"
+
+    # Important: Do not place any code after st.experimental_rerun() within this block
+
 ##########
 
 # st.write(f":green[{st.session_state['result']}]")
