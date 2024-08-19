@@ -27,25 +27,25 @@ if not os.path.exists(observations_csv):
         csv_writer.writerow(observation_keys)
 
 # def main():
-st.markdown("<h1 style='text-align: center;'>BioDesign Copilot</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>HealthTech WayFinder</h1>", unsafe_allow_html=True)
 st.markdown("<h3 style='text-align: center;'>What would you like to do?</h3>", unsafe_allow_html=True)
 
 col1, col2 = st.columns([1, 3])
 with col2:
-    if st.button("🔍 Add New Observation"):
+    if st.button("🔍 Record a New Observation"):
         switch_page("add_new_observation")
 
-    if st.button("✅ Learn From Observations"):
+    if st.button("✅ Tips for your Observations"):
         switch_page("enhance_observation")
 
     if st.button("❓ Ask the team's Observations"):
         switch_page("ask_observations")
 
-    if st.button("📊 View observations dataset"):
-        switch_page("view_dataset")
-
     if st.button("📊 Glossary"):
         switch_page("glossary")
+
+    if st.button("📊 View All Observations"):
+        switch_page("view_dataset")
 
     st.markdown("---")
     if st.button("Log Out"):
