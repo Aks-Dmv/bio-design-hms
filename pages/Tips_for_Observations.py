@@ -140,9 +140,6 @@ st.markdown("---")
 # if st.button("Back to Main Menu"):
 #     switch_page("main_menu")
 
-
-st.markdown("---")
-
 # Add custom CSS for a larger button
 st.markdown("""
     <style>
