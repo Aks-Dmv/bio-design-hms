@@ -132,7 +132,8 @@ st.markdown("""
     .big-button-container {
         min-height: 100vh;
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        justify-content: space-between;
     }
     .big-button {
         font-size: 20px;
