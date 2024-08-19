@@ -73,6 +73,12 @@ if not os.path.exists(observations_csv):
     csv_writer = csv.writer(csv_file, delimiter=";")
     csv_writer.writerow(observation_keys)
 
+def refreshObservation():
+    st.session_state['observation'] = ""
+    st.session_state['result'] = ""
+    st.session_state['observation_summary'] = ""
+    st.session_state['observation_date'] = date.today()
+
 def parseObservation(observation: str):
     llm = ChatOpenAI(
         model_name="gpt-4o",
@@ -414,6 +420,7 @@ if st.button("Add Observation to Team Record", disabled=st.session_state['observ
         # "Generated Summary: "+st.session_state['observation_summary']+"\n\n"
         if status:
             st.session_state['result'] = "Observation added to your team's database"
+            refreshObservation()
         else:
             st.session_state['result'] = "Error adding observation to your team's database, try again!"
         # clear_observation()
