@@ -46,6 +46,7 @@ observation_sheet = client.open("BioDesign Observation Record").sheet1
 # Retrieve all values in a specific column
 # For example, to get all values in column A (the first column):
 column_values = observation_sheet.col_values(10)  # 1 represents the first column
+observation_ids = observation_sheet.col_values(1)  # 1 represents the first column
 
 # # Display the values in the Streamlit app
 # st.write("New Terms:")
@@ -53,17 +54,19 @@ column_values = observation_sheet.col_values(10)  # 1 represents the first colum
 
 # Initialize a dictionary to hold the terms and their counts
 term_counts = {}
-relevant_observations = {}
+relevant_observation_ids = {}
 
 # Skip the first row (header) and process the rest
-for value in column_values[1:]:
+for i, value in enumerate(column_values[1:]):
     if value:  # Check if the string is not empty
         terms = [term.strip() for term in value.split(",")]
         for term in terms:
             if term in term_counts:
                 term_counts[term] += 1
+                relevant_observation_ids[term].append(observation_ids[i+1])
             else:
                 term_counts[term] = 1
+                relevant_observation_ids[term] = [observation_ids[i+1]]
 
 # # Display the unique terms with their counts
 # st.write("Unique terms and their counts:")
@@ -85,7 +88,7 @@ def get_definition(term):
             {"role": "user", "content": f"Define the following medical term: {term}"}
         ]
         response = openai_client.chat.completions.create(
-            model='gpt-4-turbo',
+            model='gpt-4o-mini',
             messages=messages,
         )
         definition = response.choices[0].message.content
@@ -103,7 +106,9 @@ sorted_terms = sorted(term_counts.keys())
 for term in sorted_terms:
     capitalized_term = term.capitalize()
     definition = get_definition(term)
-    st.write(f"- **{capitalized_term}** ({term_counts[term]}): {definition}")
+    st.write(f"""
+- **{capitalized_term}** ({term_counts[term]}): {definition}\n__Relevant observation IDs:__ {relevant_observation_ids[term]}
+    """)
 
 
 st.markdown("---")
