@@ -141,7 +141,8 @@ def extractObservationFeatures(observation):
         output += f" <span style='color:red;'>{field}</span>,"
 
     # Display the output
-    st.markdown(output, unsafe_allow_html=True)
+    # st.markdown(output, unsafe_allow_html=True)
+    return f"{output}"
 
 def addToGoogleSheets(observation_dict):
     try:
