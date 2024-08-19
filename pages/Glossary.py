@@ -76,13 +76,18 @@ openai.api_key = st.secrets["openai_key"]
 
 # Function to get a definition from OpenAI
 def get_definition(term):
-    response = openai.Completion.create(
-        engine="text-davinci-003",
-        prompt=f"Define the following medical term: {term}",
-        max_tokens=50
-    )
-    definition = response.choices[0].text.strip()
-    return definition
+    try:
+        response = openai.ChatCompletion.create(
+            model="gpt-4",  # Or "gpt-3.5-turbo"
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant that provides concise definitions of medical terms."},
+                {"role": "user", "content": f"Define the following medical term: {term}"}
+            ]
+        )
+        definition = response['choices'][0]['message']['content'].strip()
+        return definition
+    except Exception as e:
+        return f"Error: {e}"
 
 # Display the unique terms with their counts and definitions
 st.write("Unique terms, their counts, and definitions:")
