@@ -112,7 +112,7 @@ Output:"""
 #tips function
 
 observation_chain = (
-observation_prompt | llm | StrOutputParser()
+        observation_prompt | llm | StrOutputParser()
 )
 
 with get_openai_callback() as cb:
