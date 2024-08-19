@@ -74,7 +74,7 @@ with col2:
 st.markdown("---")
     
 # Create columns to position the Log Out button on the right
-col1, col2, col3 = st.columns([5, 1, 1])
+col1, col2, col3 = st.columns([3, 1, 1])
 with col3:
     if st.button("Log Out"):
         switch_page("../app.py")
