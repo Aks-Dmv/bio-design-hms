@@ -130,6 +130,7 @@ st.write("\n" * 50)
 st.markdown("""
     <style>
     .big-button-container {
+        min-height: 100vh;
         display: flex;
         justify-content: center;
     }
