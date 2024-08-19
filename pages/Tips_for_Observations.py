@@ -16,6 +16,13 @@ from langchain.schema.runnable import RunnableLambda
 from langchain.prompts import PromptTemplate
 from langchain_community.embeddings import OpenAIEmbeddings
 
+
+from pydantic import BaseModel, Field
+from typing import Optional
+from datetime import date
+
+import json
+
 #calling google sheets
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
