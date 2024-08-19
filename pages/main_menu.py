@@ -27,7 +27,22 @@ import os
 #         csv_writer.writerow(observation_keys)
 
 
-#current path to logo : Screenshot 2024-08-16 at 18.51.28.png
+# Apply custom CSS to use Helvetica font
+st.markdown(
+    """
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Helvetica:wght@400;700&display=swap');
+
+    html, body, [class*="css"]  {
+        font-family: 'Helvetica', sans-serif;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+
+
 
 # Your logo URL
 logo_url = "https://raw.githubusercontent.com/Aks-Dmv/bio-design-hms/main/Logo-HealthTech.png"  # Replace with the actual URL of your logo
