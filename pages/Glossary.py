@@ -98,11 +98,11 @@ st.write("Unique terms, their counts, and definitions:")
 
 # Sort the terms alphabetically
 sorted_terms = sorted(term_counts.keys())
-for term, count in sorted_terms.items():
+
+for term in sorted_terms:
     capitalized_term = term.capitalize()
     definition = get_definition(term)
-    st.write(f"- **{capitalized_term}** ({count}): {definition}")
-
+    st.write(f"- **{capitalized_term}** ({term_counts[term]}): {definition}")
 
 
 st.markdown("---")
