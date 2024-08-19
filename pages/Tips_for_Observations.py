@@ -50,24 +50,38 @@ st.markdown("# Tips for Observations")
 # Open the Google Sheet and get the first worksheet
 sheet = client.open("BioDesign Observation Record").sheet1
 
-# Try to get all values
+# Load data from Google Sheets and convert to DataFrame
 try:
     values = sheet.get_all_values()
     if not values:
         st.error("The Google Sheet appears to be empty.")
     else:
-        # Convert the raw values to a DataFrame
         headers = values.pop(0)  # Remove the first row as headers
         df = pd.DataFrame(values, columns=headers)
         
-        # Select only columns 2 and 5
-        # Note: Column indices in Python are 0-based, so column 2 is index 1, and column 5 is index 4.
-        df_selected = df.iloc[:, [0, 4]]  # This selects columns 2 and 5
+        # # Print column names for debugging
+        # st.write("Column names:", df.columns.tolist())
         
-        st.write(df_selected)  # Display the selected columns
+        # Select Observation ID column name (adjust based on your actual column names)
+        observation_id_col = "observation_id"  # Update this to the correct name
+        observation_text_col = "observation"  # Update this to the correct name
+        
+        # Create a dropdown menu for selecting Observation ID
+        observation_id = st.selectbox("Select an Observation ID", df[observation_id_col])
+        
+        # Retrieve the corresponding observation text based on the selected Observation ID
+        selected_observation = df[df[observation_id_col] == observation_id][observation_text_col].values[0]
+        
+        # Display the selected observation
+        st.write("Selected Observation:")
+        st.write(selected_observation)
+
+    
+
+except KeyError as e:
+    st.error(f"Column not found: {e}")
 except Exception as e:
     st.error(f"An error occurred: {e}")
-#df = pd.DataFrame(data)
 
 def get_tips_from_observation(observation):
 
@@ -109,18 +123,18 @@ Observation: {observation}
 Output:"""
 )
 
-# #tips function
+#tips function
 
-# observation_chain = (
-#         observation_prompt | llm | StrOutputParser()
-# )
+observation_chain = (
+        observation_prompt | llm | StrOutputParser()
+)
 
-# for index, row in df.iterrows():
+for index, row in df.iterrows():
 
-#         with get_openai_callback() as cb:
-#         output = observation_chain.invoke({"observation": observation, "questions_list": questions_list})
+        with get_openai_callback() as cb:
+        output = observation_chain.invoke({"observation": observation, "questions_list": questions_list})
 
-# return output
+return output
 
 # # Display each observation
 # for index, row in df.iterrows():
@@ -129,11 +143,11 @@ Output:"""
 #     st.markdown(f"**Observer:** {row['observer']}")
 #     st.markdown(f"**Observation:** {row['observation']}")
     
-#     if st.button(f"Get Tips for this Observation", key=f"tips_button_{index}"):
-#         tips = get_tips_from_observation(row['observation'])
-#         st.markdown(tips)
+    if st.button(f"Get Tips for this Observation", key=f"tips_button_{index}"):
+        tips = get_tips_from_observation(row['observation'])
+        st.markdown(tips)
     
-#     st.markdown("---")
+    st.markdown("---")
 
 # Use the actual column name from your Google Sheet
 observation_id = st.selectbox("Select an Observation ID", df['observation_id'])
