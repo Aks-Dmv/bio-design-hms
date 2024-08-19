@@ -95,7 +95,10 @@ def get_definition(term):
 
 # Display the unique terms with their counts and definitions
 st.write("Unique terms, their counts, and definitions:")
-for term, count in term_counts.items():
+
+# Sort the terms alphabetically
+sorted_terms = sorted(term_counts.keys())
+for term, count in sorted_terms.items():
     capitalized_term = term.capitalize()
     definition = get_definition(term)
     st.write(f"- **{capitalized_term}** ({count}): {definition}")
