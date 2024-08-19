@@ -89,7 +89,7 @@ st.markdown("""
         justify-content: center;
     }
     .big-button {
-        font-size: 40px;
+        font-size: 25px;
         padding: 15px 60px;
         background-color: #365980; /* blueish color */
         color: white;
