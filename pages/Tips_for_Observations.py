@@ -22,7 +22,8 @@ from typing import Optional
 from datetime import date
 
 import json
-
+# If using st.secrets
+creds_dict = st.secrets["gcp_service_account"]
 #calling google sheets
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
