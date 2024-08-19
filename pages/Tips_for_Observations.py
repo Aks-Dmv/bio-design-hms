@@ -16,11 +16,29 @@ from langchain.schema.runnable import RunnableLambda
 from langchain.prompts import PromptTemplate
 from langchain_community.embeddings import OpenAIEmbeddings
 
+#calling google sheets
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+# Set up the connection to Google Sheets
+scope = [
+        "https://www.googleapis.com/auth/spreadsheets",
+        "https://www.googleapis.com/auth/drive.metadata.readonly"
+        ]
+creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
+client = gspread.authorize(creds)
+observation_sheet = client.open("BioDesign Observation Record").sheet1
+
+
+
+
 OPENAI_API_KEY = st.secrets["openai_key"]
 
 st.markdown("# Tips for Observations")
 
-df = pd.read_csv("observations.csv", delimiter=';')
+# df = pd.read_csv("observations.csv", delimiter=';')
+# Convert the sheet to a pandas DataFrame
+data = sheet.get_all_records()
+df = pd.DataFrame(data)
 
 def get_tips_from_observation(observation):
 
