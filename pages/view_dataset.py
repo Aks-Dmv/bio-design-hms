@@ -16,6 +16,7 @@ df = pd.read_csv("observations.csv", delimiter=';')
 
 st.markdown("---")
 
+
 # Optional: Display each observation from the CSV
 # for index, row in df.iterrows():
 #     st.markdown(f"### {row['observation_title']}")
@@ -52,27 +53,81 @@ df = pd.read_csv("observations.csv", delimiter=';')
 
 # # st.markdown("---")
 
+################
+
+# # Add custom CSS for a larger button
+# st.markdown("""
+#     <style>
+#     div.stButton > button {
+#         font-size: 60px !important;
+#         padding: 20px 74px;
+#         background-color: #365980; /* blueish color */
+#         color: white;
+#         border: none;
+#         border-radius: 8px;
+#         cursor: pointer;
+#     }
+#     div.stButton > button:hover {
+#         background-color: #c2c2c2; /* Grey */
+#     }
+#     </style>
+#     """, unsafe_allow_html=True)
+
+# # Use Streamlit's native button for functionality
+# if st.button("Back to Main Menu"):
+#     switch_page("main_menu")
+
+###############
+
+import streamlit as st
+from streamlit_extras.switch_page_button import switch_page
+import pandas as pd
+
+st.set_page_config(page_title="View Observations Dataset", page_icon="📊")
+
+st.markdown("# View Observations Dataset")
+
+# Embedding Google Sheets using a larger iframe
+st.markdown("""
+    <iframe src="https://docs.google.com/spreadsheets/d/1wid5imrlhkXOvmpWCbZzhAUrVSTS5iNOX3JASOxtJM4/edit?usp=sharing"
+    width="100%" height="800px"></iframe>
+    """, unsafe_allow_html=True)
+
+df = pd.read_csv("observations.csv", delimiter=';')
+
+st.markdown("---")
+
 # Add custom CSS for a larger button
 st.markdown("""
     <style>
-    div.stButton > button {
-        font-size: 60px !important;
-        padding: 20px 74px;
-        background-color: #365980; /* blueish color */
+    .big-button-container {
+        display: flex;
+        justify-content: center;
+    }
+    .big-button {
+        font-size: 20px;
+        padding: 20px 40px;
+        background-color: #4CAF50; /* Green */
         color: white;
         border: none;
         border-radius: 8px;
         cursor: pointer;
+        text-align: center;
     }
-    div.stButton > button:hover {
-        background-color: #c2c2c2; /* Grey */
+    .big-button:hover {
+        background-color: #45a049; /* Darker green */
     }
     </style>
     """, unsafe_allow_html=True)
 
-# Use Streamlit's native button for functionality
-if st.button("Back to Main Menu"):
-    switch_page("main_menu")
+# Create a container to hold the button with the custom class
+st.markdown("""
+    <div class="big-button-container">
+        <button class="big-button" onclick="window.location.href='/?page=main_menu'">Back to Main Menu</button>
+    </div>
+    """, unsafe_allow_html=True)
+
+
 
 # if st.button("Back to Main Menu"):
 #     switch_page("main_menu")
