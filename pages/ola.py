@@ -1,13 +1,32 @@
 import streamlit as st
 from streamlit_extras.switch_page_button import switch_page
+
+st.set_page_config(page_title="Tips for Observations", page_icon="✅")
+import streamlit as st
+from streamlit_extras.switch_page_button import switch_page
 import pandas as pd
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
+
+
 from langchain_openai import ChatOpenAI
 from langchain.chains import LLMChain
-from langchain.output_parsers import StrOutputParser
+from langchain.output_parsers import PydanticOutputParser
 from langchain.callbacks import get_openai_callback
+from langchain.schema import StrOutputParser
+from langchain.schema.runnable import RunnableLambda
 from langchain.prompts import PromptTemplate
+from langchain_community.embeddings import OpenAIEmbeddings
+
+
+from pydantic import BaseModel, Field
+from typing import Optional
+from datetime import date
+
+import json
+# If using st.secrets
+creds_dict = st.secrets["gcp_service_account"]
+#calling google sheets
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
 # Set up the connection to Google Sheets
 creds_dict = st.secrets["gcp_service_account"]
