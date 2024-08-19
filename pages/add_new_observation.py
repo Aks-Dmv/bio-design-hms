@@ -350,7 +350,7 @@ st.session_state['observation'] = st.text_area("Add Your Observation", value=st.
 result_container = st.empty()
 
 #Use columns to place buttons side by side
-col11, col21, col31 = st.columns([2, 3, 3])
+col11, col21, col31 = st.columns(3)
 
 
 with col11:
