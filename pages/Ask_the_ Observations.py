@@ -123,66 +123,35 @@ if prompt := st.chat_input("What would you like to ask?"):
 st.markdown("---")
 
 
-# # Add a spacer to push the button to the bottom of the page
-# st.write("\n" * 20)
-# # Add custom CSS for a larger button
-# st.markdown("""
-#     <style>
-#     .big-button-container {
-#         display: flex;
-#         justify-content: center;
-#     }
-#     .big-button {
-#         font-size: 20px;
-#         padding: 10px 60px;
-#         background-color: #365980; /* blueish color */
-#         color: white;
-#         border: none;
-#         border-radius: 8px;
-#         cursor: pointer;
-#         text-align: center;
-#     }
-#     .big-button:hover {
-#         background-color: #c2c2c2; /* Grey */
-#     }
-#     </style>
-#     """, unsafe_allow_html=True)
-
-# # Create a container to hold the button with the custom class
-# st.markdown("""
-#     <div class="big-button-container">
-#         <button class="big-button" onclick="window.location.href='/?page=main_menu'">Back to Main Menu</button>
-#     </div>
-#     """, unsafe_allow_html=True)
-
-# Add custom CSS to make the footer sticky at the bottom of the page
+# Add a spacer to push the button to the bottom of the page
+st.write("\n" * 20)
+# Add custom CSS for a larger button
 st.markdown("""
     <style>
-    .footer {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        background-color: #f1f1f1;
-        padding: 10px 0;
+    .big-button-container {
+        display: flex;
+        justify-content: center;
+    }
+    .big-button {
+        font-size: 20px;
+        padding: 10px 60px;
+        background-color: #365980; /* blueish color */
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
         text-align: center;
     }
-    body {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-    }
-    .main-content {
-        flex: 1;
+    .big-button:hover {
+        background-color: #c2c2c2; /* Grey */
     }
     </style>
     """, unsafe_allow_html=True)
 
-# Main content area
-st.markdown('<div class="main-content"></div>', unsafe_allow_html=True)
-
-# Footer with "Back to Main Menu" button
+# Create a container to hold the button with the custom class
 st.markdown("""
-    <div class="footer">
-        <button onclick="window.location.href='/?page=main_menu'">Back to Main Menu</button>
+    <div class="big-button-container">
+        <button class="big-button" onclick="window.location.href='/?page=main_menu'">Back to Main Menu</button>
     </div>
     """, unsafe_allow_html=True)
+
