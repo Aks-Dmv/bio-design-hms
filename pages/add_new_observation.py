@@ -32,6 +32,7 @@ observations_csv = "observations.csv"
 OPENAI_API_KEY = st.secrets["openai_key"]
 
 # Access the credentials from Streamlit secrets
+#test
 creds_dict = {
     "type" : st.secrets["gcp_service_account"]["type"],
     "project_id" : st.secrets["gcp_service_account"]["project_id"],
