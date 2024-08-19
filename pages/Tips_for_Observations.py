@@ -141,6 +141,11 @@ observation_id = st.selectbox("Select an Observation ID", df['observation_id'])
 # Get the observation text based on the selected Observation ID
 selected_observation = df[df['Actual_Column_Name_Here'] == observation_id]['Observation'].values[0]
 
+
+# Display the selected observation
+st.write("Selected Observation:")
+st.write(selected_observation)
+
 st.markdown("---")
 
 # if st.button("Back to Main Menu"):
