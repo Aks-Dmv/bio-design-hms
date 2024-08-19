@@ -261,8 +261,8 @@ def update_observation_id():
     counter = st.session_state['observation_counters'][obs_date_str]
     st.session_state['observation_id'] = generate_observation_id(st.session_state['observation_date'], counter)
 
-# Use columns to place observation_date and observation_id side by side
-col1, col2 = st.columns(2)
+# Use columns to place observation_date, observation_id, and observer side by side
+col1, col2, col3 = st.columns(2)
 
 with col1:
     # st calendar for date input with a callback to update the observation_id
@@ -276,7 +276,9 @@ with col2:
     # Display the observation ID
     st.text_input("Observation ID:", value=st.session_state['observation_id'], disabled=True)
 
-
+with col3:
+    #Display Observer options 
+    observer = st.selectbox("Observer", ["Ana", "Bridget"])
 
 ############
 
@@ -306,7 +308,7 @@ with col2:
 #########
 
 # Textbox for name input
-observer = st.selectbox("Observer", ["Ana", "Bridget"])
+#observer = st.selectbox("Observer", ["Ana", "Bridget"])
 
 # Text area for observation input
 st.session_state['observation'] = st.text_area("Add Your Observation", value=st.session_state['observation'], placeholder="Enter your observation...", height=200)
