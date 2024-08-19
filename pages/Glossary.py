@@ -55,9 +55,15 @@ terms = []
 # Skip the first row (header) and process the rest
 for value in column_values[1:]:
     if value:  # Check if the string is not empty
-        terms.extend([term.strip() for term in value.split(",")])
+        terms = [term.strip() for term in value.split(",")]
+        for term in terms:
+            if term in term_counts:
+                term_counts[term] += 1
+            else:
+                term_counts[term] = 1
 
-# Display the terms directly as text
-st.write("Terms found in the selected column:")
-for term in terms:
-    st.write(f"- {term}")
+
+# Display the unique terms with their counts
+st.write("Unique terms and their counts:")
+for term, count in term_counts.items():
+    st.write(f"- {term} ({count})")
