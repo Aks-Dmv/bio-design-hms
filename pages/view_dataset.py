@@ -56,8 +56,8 @@ df = pd.read_csv("observations.csv", delimiter=';')
 st.markdown("""
     <style>
     div.stButton > button {
-        font-size: 180px;
-        padding: 20px 24px;
+        font-size: 280px;
+        padding: 30px 64px;
         background-color: #365980; /* blueish color */
         color: white;
         border: none;
