@@ -230,8 +230,10 @@ st.session_state['observation_date'] = st.date_input("Observation Date", date.to
 
 # add input called observation_id with default value of current date
 observation_id_counter = 1
-default_observation_id = date.today().strftime("%Y%m%d")+"%03d"%observation_id_counter
-st.session_state['observation_id'] = st.text_input("Observation ID:", value=default_observation_id)
+#default_observation_id = date.today().strftime("%Y%m%d")+"%03d"%observation_id_counter
+new_observation_id = st.observation_date().strftime("%Y%m%d")+"%03d"%observation_id_counter
+st.session_state['observation_id'] = st.text_input("Observation ID:", value=new_observation_id)
+#st.session_state['observation_id'] = st.text_input("Observation ID:", value=default_observation_id)
 
 # Textbox for name input
 observer = st.selectbox("Observer", ["Ana", "Bridget"])
