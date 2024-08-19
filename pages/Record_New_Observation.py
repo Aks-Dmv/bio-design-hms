@@ -56,6 +56,14 @@ if 'result' not in st.session_state:
 if 'observation_summary' not in st.session_state:
     st.session_state['observation_summary'] = ""
 
+if 'observation_date' not in st.session_state:
+    st.session_state['observation_date'] = date.today()
+
+if 'observation_id' not in st.session_state:
+    st.session_state['observation_id'] = ""
+
+if 'rerun' not in st.session_state:
+    st.session_state['rerun'] = False
 
 class ObservationRecord(BaseModel):
     location: Optional[str] = Field(default=None, description="Location or setting where this observation made. e.g. operating room (OR), hospital, exam room,....")
