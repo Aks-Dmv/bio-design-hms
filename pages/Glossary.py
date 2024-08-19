@@ -45,6 +45,17 @@ observation_sheet = client.open("BioDesign Observation Record").sheet1
 # For example, to get all values in column A (the first column):
 column_values = observation_sheet.col_values(10)  # 1 represents the first column
 
-# Display the values in the Streamlit app
-st.write("New Terms:")
-st.write(column_values)
+# # Display the values in the Streamlit app
+# st.write("New Terms:")
+# st.write(column_values)
+
+
+# Split terms separated by commas into individual list items
+terms = []
+for value in column_values:
+    if value:  # Check if the string is not empty
+        terms.extend([term.strip() for term in value.split(",")])
+
+# Display the list of terms in the Streamlit app
+st.write("List of terms:")
+st.write(terms)
