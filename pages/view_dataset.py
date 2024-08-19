@@ -41,7 +41,7 @@ Click the link below to open your team's observation record in Google Sheets:
 
 df = pd.read_csv("observations.csv", delimiter=';')
 
-st.markdown("---")
+# st.markdown("---")
 
 # # # Display each observation
 # # for index, row in df.iterrows():
@@ -56,7 +56,31 @@ st.markdown("---")
 # if st.button("Back to Main Menu"):
 #     switch_page("main_menu")
 
-if st.button("Back to Main Menu"):
+# if st.button("Back to Main Menu"):
+#     switch_page("main_menu")
+
+# Add custom CSS for a larger button
+st.markdown("""
+    <style>
+    .big-button {
+        font-size: 20px;
+        padding: 10px 24px;
+        background-color: #4CAF50; /* Green */
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        display: inline-block;
+        margin: 10px;
+    }
+    .big-button:hover {
+        background-color: #45a049; /* Darker green */
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+# Use HTML to create the bigger button
+if st.markdown('<button class="big-button">Back to Main Menu</button>', unsafe_allow_html=True):
     switch_page("main_menu")
 
 
