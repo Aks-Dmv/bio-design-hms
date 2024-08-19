@@ -130,10 +130,11 @@ st.write("\n" * 50)
 st.markdown("""
     <style>
     .big-button-container {
-        min-height: 100vh;
+
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        margin-top: auto;
     }
     .big-button {
         font-size: 20px;
