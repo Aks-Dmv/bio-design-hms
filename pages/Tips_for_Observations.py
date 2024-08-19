@@ -1,7 +1,7 @@
 import streamlit as st
 from streamlit_extras.switch_page_button import switch_page
 
-st.set_page_config(page_title="Learn From Observations", page_icon="✅")
+st.set_page_config(page_title="Tips for Observations", page_icon="✅")
 import streamlit as st
 from streamlit_extras.switch_page_button import switch_page
 import pandas as pd
@@ -18,7 +18,7 @@ from langchain_community.embeddings import OpenAIEmbeddings
 
 OPENAI_API_KEY = st.secrets["openai_key"]
 
-st.markdown("# Learn From Observations")
+st.markdown("# Tips for Observations")
 
 df = pd.read_csv("observations.csv", delimiter=';')
 
