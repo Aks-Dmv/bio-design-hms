@@ -117,7 +117,7 @@ observation_chain = (
 
 for index, row in df.iterrows():
 
-with get_openai_callback() as cb:
+        with get_openai_callback() as cb:
         output = observation_chain.invoke({"observation": observation, "questions_list": questions_list})
 
 return output
