@@ -135,6 +135,13 @@ Output:"""
     
 #     st.markdown("---")
 
+# Create a dropdown menu for selecting Observation ID
+observation_id = st.selectbox("Select an Observation ID", df['Observation ID'])
+
+# Get the observation text based on the selected Observation ID
+selected_observation = df[df['Observation ID'] == observation_id]['Observation'].values[0]
+
+
 st.markdown("---")
 
 # if st.button("Back to Main Menu"):
