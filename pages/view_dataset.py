@@ -9,7 +9,7 @@ st.markdown("# View Observations Dataset")
 # Embedding Google Sheets using an iframe
 st.markdown("""
     <iframe src="https://docs.google.com/spreadsheets/d/1wid5imrlhkXOvmpWCbZzhAUrVSTS5iNOX3JASOxtJM4/edit?usp=sharing"
-    width="400%" height="1000px"></iframe>
+    width="200%" height="1000px"></iframe>
     """, unsafe_allow_html=True)
 
 df = pd.read_csv("observations.csv", delimiter=';')
