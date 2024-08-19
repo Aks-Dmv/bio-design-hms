@@ -56,16 +56,16 @@ df = pd.read_csv("observations.csv", delimiter=';')
 st.markdown("""
     <style>
     div.stButton > button {
-        font-size: 80px;
-        padding: 20px 44px;
-        background-color: #365980; /* ish color */
+        font-size: 180px;
+        padding: 20px 24px;
+        background-color: #365980; /* blueish color */
         color: white;
         border: none;
         border-radius: 8px;
         cursor: pointer;
     }
     div.stButton > button:hover {
-        background-color: #45a049; /* Darker green */
+        background-color: #c2c2c2; /* Grey */
     }
     </style>
     """, unsafe_allow_html=True)
