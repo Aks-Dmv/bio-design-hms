@@ -49,13 +49,15 @@ column_values = observation_sheet.col_values(10)  # 1 represents the first colum
 # st.write("New Terms:")
 # st.write(column_values)
 
-
-# Split terms separated by commas into individual list items
+# Initialize a list to hold the terms
 terms = []
-for value in column_values:
+
+# Skip the first row (header) and process the rest
+for value in column_values[1:]:
     if value:  # Check if the string is not empty
         terms.extend([term.strip() for term in value.split(",")])
 
-# Display the list of terms in the Streamlit app
-st.write("List of terms:")
-st.write(terms)
+# Display the terms directly as text
+st.write("Terms found in the selected column:")
+for term in terms:
+    st.write(f"- {term}")
