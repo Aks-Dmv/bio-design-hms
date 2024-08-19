@@ -127,8 +127,8 @@ def extractObservationFeatures(observation):
     missing_fields = [field.replace("_", " ").capitalize() for field in missing_fields]
 
     output += "\n\n **Missing fields**:"
-    for field in missing_fields:
-        output += f" {field},"
+    # for field in missing_fields:
+    #     output += f" {field},"
 
     # # output += "\n\n"
     # # output += "="*75
@@ -141,7 +141,7 @@ def extractObservationFeatures(observation):
         output += f" <span style='color:red;'>{field}</span>,"
 
     # Display the output
-    # st.markdown(output, unsafe_allow_html=True)
+    st.markdown(output, unsafe_allow_html=True)
 
 def addToGoogleSheets(observation_dict):
     try:
