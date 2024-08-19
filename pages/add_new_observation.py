@@ -262,7 +262,7 @@ def update_observation_id():
     st.session_state['observation_id'] = generate_observation_id(st.session_state['observation_date'], counter)
 
 # Use columns to place observation_date, observation_id, and observer side by side
-col1, col2, col3 = st.columns(2)
+col1, col2, col3 = st.columns(3)
 
 with col1:
     # st calendar for date input with a callback to update the observation_id
