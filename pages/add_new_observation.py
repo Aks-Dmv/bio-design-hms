@@ -225,14 +225,13 @@ def clear_observation():
 
 # st.session_state['observation_summary'] = st.text_input("Observation Title:", value=st.session_state['observation_summary'])
 
+# st calendar for date input
+st.session_state['observation_date'] = st.date_input("Observation Date", date.today())
+
 # add input called observation_id with default value of current date
 observation_id_counter = 1
 default_observation_id = date.today().strftime("%Y%m%d")+"%03d"%observation_id_counter
 st.session_state['observation_id'] = st.text_input("Observation ID:", value=default_observation_id)
-
-# st calendar for date input
-st.session_state['observation_date'] = st.date_input("Observation Date", date.today())
-
 
 # Textbox for name input
 observer = st.selectbox("Observer", ["Ana", "Bridget"])
