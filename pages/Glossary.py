@@ -110,10 +110,10 @@ for term in sorted_terms:
 <ul>
     <li><b>{capitalized_term}</b> ({term_counts[capitalized_term]}): {definition}<br>
     <i>Relevant observation IDs:</i><br>
-    {relevant_observation_ids[capitalized_term]}</li>
+    {relevant_observation_ids[capitalized_term]}
+    </li>
 </ul>
 """, unsafe_allow_html=True)
-
 
 st.markdown("---")
 
