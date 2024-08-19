@@ -248,17 +248,38 @@ def generate_observation_id(observation_date, counter):
 # Function to update observation ID when the date changes
 def update_observation_id():
     obs_date_str = st.session_state['observation_date'].strftime('%y%m%d')
-    
-    # Check if the date is already in the dictionary
-    if obs_date_str in st.session_state['observation_counters']:
-        # Increment the counter for this date
-        st.session_state['observation_counters'][obs_date_str] += 1
+
+    # get all observation ids from the sheets and update the counter
+    scope = [
+        "https://www.googleapis.com/auth/spreadsheets",
+        "https://www.googleapis.com/auth/drive.metadata.readonly"
+        ]
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
+    client = gspread.authorize(creds)
+    observation_sheet = client.open("BioDesign Observation Record").sheet1
+    column_values = observation_sheet.col_values(1) 
+
+    # find all observation ids with the same date
+    obs_date_ids = [obs_id for obs_id in column_values if obs_id.startswith(f"OB{obs_date_str}")]
+    obs_date_ids.sort()
+
+    # get the counter from the last observation id
+    if len(obs_date_ids) > 0:
+        counter = int(obs_date_ids[-1][-4:])+1
     else:
-        # Initialize the counter to 1 for a new date
-        st.session_state['observation_counters'][obs_date_str] = 1
+        counter = 1
+    
+    # # Check if the date is already in the dictionary
+    # if obs_date_str in st.session_state['observation_counters']:
+    #     # Increment the counter for this date
+    #     st.session_state['observation_counters'][obs_date_str] += 1
+    # else:
+    #     # Initialize the counter to 1 for a new date
+    #     st.session_state['observation_counters'][obs_date_str] = 1
     
     # Generate the observation ID using the updated counter
-    counter = st.session_state['observation_counters'][obs_date_str]
+    # counter = st.session_state['observation_counters'][obs_date_str]
+    
     st.session_state['observation_id'] = generate_observation_id(st.session_state['observation_date'], counter)
 
 # Use columns to place observation_date, observation_id, and observer side by side
