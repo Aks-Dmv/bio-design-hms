@@ -49,8 +49,8 @@ column_values = observation_sheet.col_values(10)  # 1 represents the first colum
 # st.write("New Terms:")
 # st.write(column_values)
 
-# Initialize a list to hold the terms
-terms = []
+# Initialize a dictionary to hold the terms and their counts
+term_counts = {}
 
 # Skip the first row (header) and process the rest
 for value in column_values[1:]:
@@ -61,7 +61,6 @@ for value in column_values[1:]:
                 term_counts[term] += 1
             else:
                 term_counts[term] = 1
-
 
 # Display the unique terms with their counts
 st.write("Unique terms and their counts:")
