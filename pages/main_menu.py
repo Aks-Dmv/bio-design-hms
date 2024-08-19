@@ -30,7 +30,7 @@ import os
 #current path to logo : Screenshot 2024-08-16 at 18.51.28.png
 
 # Your logo URL
-logo_url = "https://raw.githubusercontent.com/Aks-Dmv/bio-design-hms/main/file.png"  # Replace with the actual URL of your logo
+logo_url = "https://raw.githubusercontent.com/Aks-Dmv/bio-design-hms/main/Logo-HealthTech.png"  # Replace with the actual URL of your logo
 
 # Display the title with the logo below it
 st.markdown(
