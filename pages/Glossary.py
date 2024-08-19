@@ -53,6 +53,7 @@ column_values = observation_sheet.col_values(10)  # 1 represents the first colum
 
 # Initialize a dictionary to hold the terms and their counts
 term_counts = {}
+relevant_observations = {}
 
 # Skip the first row (header) and process the rest
 for value in column_values[1:]:

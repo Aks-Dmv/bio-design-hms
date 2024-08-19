@@ -433,7 +433,8 @@ if st.button("Add Observation to Team Record", disabled=st.session_state['observ
             st.session_state['result'] = "Error adding observation to your team's database, try again!"
         # clear_observation()
 
-st.write(f":green[{st.session_state['result']}]")
+# st.write(f":green[{st.session_state['result']}]")
+st.markdown(st.session_state['result'], unsafe_allow_html=True)
 
 st.markdown("---")
 
