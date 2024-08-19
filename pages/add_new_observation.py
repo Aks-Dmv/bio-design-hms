@@ -349,22 +349,23 @@ st.session_state['observation'] = st.text_area("Add Your Observation", value=st.
 # Container for result display
 result_container = st.empty()
 
+#Use columns to place buttons side by side
+col11, col21, col31 = st.columns([2, 3, 3])
 
+
+with col11:
 if st.button("Generate Observation Summary"):
     st.session_state['observation_summary']  = generateObservationSummary(st.session_state['observation'])
 
 if st.session_state['observation_summary'] != "":
     st.session_state['observation_summary'] = st.text_area("Generated Summary (editable):", value=st.session_state['observation_summary'], height=50)
+    
 
-
-#Use columns to place buttons side by side
-#col1, col2, col3 = st.columns([2, 3, 3])
-
-# with col1:
+with col21:
 if st.button("Evaluate Observation"):
     st.session_state['result'] = extractObservationFeatures(st.session_state['observation'])
 
-# with col2:
+with col31:
 if st.button("Add Observation to Team Record"):
     # st.session_state['observation_summary']  = generateObservationSummary(st.session_state['observation'])
     st.session_state["error"] = ""
