@@ -235,7 +235,7 @@ def clear_observation():
 
 # Function to generate observation ID with the format OBYYYYMMDDxxxx
 def generate_observation_id(observation_date, counter):
-    return f"OB{observation_date.strftime('%Y%m%d')}{counter:04d}"
+    return f"OB{observation_date.strftime('%y%m%d')}{counter:04d}"
 
 # Initialize or retrieve observation ID counter from session state
 if 'observation_id_counter' not in st.session_state:
