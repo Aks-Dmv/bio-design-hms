@@ -56,9 +56,6 @@ if 'result' not in st.session_state:
 if 'observation_summary' not in st.session_state:
     st.session_state['observation_summary'] = ""
 
-if 'observation_date' not in st.session_state:
-    st.session_state['observation_date'] = date.today()
-
 if 'observation_id' not in st.session_state:
     st.session_state['observation_id'] = ""
 
