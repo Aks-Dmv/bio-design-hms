@@ -122,6 +122,11 @@ if prompt := st.chat_input("What would you like to ask?"):
 
 st.markdown("---")
 
+# Spacer to push the button to the bottom
+st.write("")
+st.write("")
+st.write("")
+st.write("")
 
 # Add a spacer to push the button to the bottom of the page
 st.write("\n" * 20)
