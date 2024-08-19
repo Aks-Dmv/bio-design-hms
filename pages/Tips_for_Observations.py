@@ -135,11 +135,8 @@ Output:"""
     
 #     st.markdown("---")
 
-# Print the column names to check what they are
-st.write(df.columns.tolist())
-
 # Use the actual column name from your Google Sheet
-observation_id = st.selectbox("Select an Observation ID", df['Actual_Column_Name_Here'])
+observation_id = st.selectbox("Select an Observation ID", df['observation_id'])
 
 # Get the observation text based on the selected Observation ID
 selected_observation = df[df['Actual_Column_Name_Here'] == observation_id]['Observation'].values[0]
