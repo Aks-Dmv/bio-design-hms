@@ -112,7 +112,7 @@ for term in sorted_terms:
     <i>Relevant observation IDs:</i><br>
     {relevant_observation_ids[capitalized_term]}</li>
 </ul>
-""")
+""", unsafe_allow_html=True)
 
 
 st.markdown("---")
