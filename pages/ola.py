@@ -30,18 +30,45 @@ try:
     else:
         headers = values.pop(0)  # Remove the first row as headers
         df = pd.DataFrame(values, columns=headers)
-        df_selected = df.iloc[:, [1, 4]]  # This selects columns 2 and 5
+        
+        # Select only columns 1 (Observation ID) and 5 (Observation text)
+        df_selected = df.iloc[:, [0, 4]]  # This selects columns 1 (Observation ID) and 5 (Observation)
         st.write(df_selected)  # Display the selected columns
+        
+        # Create a dropdown menu for selecting Observation ID
+        observation_id = st.selectbox("Select an Observation ID", df_selected['Observation ID'])
+        
+        # Get the observation text based on the selected Observation ID
+        selected_observation = df_selected[df_selected['Observation ID'] == observation_id]['Observation'].values[0]
+        
 except Exception as e:
     st.error(f"An error occurred: {e}")
 
-def get_tips_from_observation(observation, questions_list):
+def get_tips_from_observation(observation):
     llm = ChatOpenAI(
         model_name="gpt-4o",
         temperature=0.7,
         openai_api_key=OPENAI_API_KEY,
         max_tokens=500,
     )
+
+    questions_list = """
+    Problem definition:
+    What was the stated or principle cause of the problem you observed?
+    What other things could have caused or contributed to this problem?
+    What could have been done to avoid the problem?
+    What other problems exist because this problem exists?
+    Stakeholder definition:
+    Specific description of who specifically had this problem (Man, Woman, Child, Age, Socio-economic background, etc.)
+    Are there any other populations that would have this problem? (all OR patients, all patients over 65, all patients with CF, etc.)
+    Are there any populations that experience the same problem with more severity than what was observed?
+    Are there any populations that experience the same problem with less severity than what was observed?
+    Outcome definition:
+    What is the desired outcome with current treatments?
+    What is the ideal outcome desired to lessen the problem to a manageable amount?
+    What is the desired outcome to eliminate the problem?
+    What is the outcome if you prevented the problem?
+    """
 
     observation_prompt = PromptTemplate.from_template(
         """
@@ -67,37 +94,10 @@ def get_tips_from_observation(observation, questions_list):
 
     return output
 
-# Sample questions list
-questions_list = """
-Problem definition:
-What was the stated or principle cause of the problem you observed?
-What other things could have caused or contributed to this problem?
-What could have been done to avoid the problem?
-What other problems exist because this problem exists?
-Stakeholder definition:
-Specific description of who specifically had this problem (Man, Woman, Child, Age, Socio-economic background, etc.)
-Are there any other populations that would have this problem? (all OR patients, all patients over 65, all patients with CF, etc.)
-Are there any populations that experience the same problem with more severity than what was observed?
-Are there any populations that experience the same problem with less severity than what was observed?
-Outcome definition:
-What is the desired outcome with current treatments?
-What is the ideal outcome desired to lessen the problem to a manageable amount?
-What is the desired outcome to eliminate the problem?
-What is the outcome if you prevented the problem?
-"""
-
-# Display each observation
-for index, row in df.iterrows():
-    st.markdown(f"### {row['observation_title']}")
-    st.markdown(f"**Date:** {row['observation_date']}")
-    st.markdown(f"**Observer:** {row['observer']}")
-    st.markdown(f"**Observation:** {row['observation']}")
-    
-    if st.button(f"Get Tips for this Observation", key=f"tips_button_{index}"):
-        tips = get_tips_from_observation(row['observation'], questions_list)
-        st.markdown(tips)
-    
-    st.markdown("---")
+# Display tips for the selected observation
+if st.button("Get Tips"):
+    tips = get_tips_from_observation(selected_observation)
+    st.markdown(tips)
 
 st.markdown("---")
 
@@ -130,3 +130,4 @@ st.markdown("""
         <button class="big-button" onclick="window.location.href='/?page=main_menu'">Back to Main Menu</button>
     </div>
     """, unsafe_allow_html=True)
+
