@@ -26,9 +26,29 @@ import os
 #         csv_writer = csv.writer(csv_file, delimiter=";")
 #         csv_writer.writerow(observation_keys)
 
-# def main():
-st.markdown("<h1 style='text-align: center;'>HealthTech WayFinder</h1>", unsafe_allow_html=True)
+
+#current path to logo : Screenshot 2024-08-16 at 18.51.28.png
+
+# Your logo URL
+logo_url = "https://github.com/Aks-Dmv/bio-design-hms/blob/main/Screenshot%202024-08-16%20at%2018.51.28.png"  # Replace with the actual URL of your logo
+
+# Display the title with the logo
+st.markdown(
+    f"""
+    <div style="display: flex; align-items: center; justify-content: center;">
+        <h1 style='margin-right: 10px;'>HealthTech WayFinder</h1>
+        <img src="{logo_url}" alt="Logo" style="width:50px; height:50px;">
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+
 st.markdown("<h3 style='text-align: center;'>What would you like to do?</h3>", unsafe_allow_html=True)
+
+
+# # def main():
+# st.markdown("<h1 style='text-align: center;'>HealthTech WayFinder</h1>", unsafe_allow_html=True)
+# st.markdown("<h3 style='text-align: center;'>What would you like to do?</h3>", unsafe_allow_html=True)
 
 col1, col2 = st.columns([1, 3])
 with col2:
