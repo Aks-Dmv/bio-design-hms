@@ -24,13 +24,13 @@ import json
 import os
 import csv
 
-with open("path_to_your_credentials.json") as f:
-    creds_dict = json.load(f)
-
 
 st.set_page_config(page_title="Glossary", page_icon="📊")
 
 st.markdown("# Glossary (Coming Soon)")
+
+# If using st.secrets
+creds_dict = st.secrets["gcp_service_account"]
 
 # Set up the connection to Google Sheets
 scope = [
