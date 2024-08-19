@@ -24,10 +24,6 @@ st.markdown("---")
 #     st.markdown(f"**Observation:** {row['observation']}")
 #     st.markdown("---")
 
-if st.button("Back to Main Menu"):
-    switch_page("main_menu")
-
-
 # import streamlit as st
 # from streamlit_extras.switch_page_button import switch_page
 
@@ -59,3 +55,10 @@ st.markdown("---")
 
 # if st.button("Back to Main Menu"):
 #     switch_page("main_menu")
+
+if st.button("Back to Main Menu"):
+    switch_page("main_menu")
+
+
+
+
