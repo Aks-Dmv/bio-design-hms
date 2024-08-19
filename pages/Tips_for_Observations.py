@@ -50,24 +50,23 @@ st.markdown("# Tips for Observations")
 # Open the Google Sheet and get the first worksheet
 sheet = client.open("BioDesign Observation Record").sheet1
 
-# Try to get all records, if that fails, try to get all values
+# Try to get all values
 try:
-    data = sheet.get_all_records()  # This assumes the first row is headers
-    if not data:  # If the sheet is empty, this will be an empty list
-        st.error("The Google Sheet appears to be empty.")
-    else:
-        df = pd.DataFrame(data)
-except Exception as e:
-    st.error(f"An error occurred: {e}")
-    # Fallback to using get_all_values() if get_all_records() fails
     values = sheet.get_all_values()
     if not values:
         st.error("The Google Sheet appears to be empty.")
     else:
         # Convert the raw values to a DataFrame
-        headers = values.pop(0)
+        headers = values.pop(0)  # Remove the first row as headers
         df = pd.DataFrame(values, columns=headers)
-
+        
+        # Select only columns 2 and 5
+        # Note: Column indices in Python are 0-based, so column 2 is index 1, and column 5 is index 4.
+        df_selected = df.iloc[:, [1, 4]]  # This selects columns 2 and 5
+        
+        st.write(df_selected)  # Display the selected columns
+except Exception as e:
+    st.error(f"An error occurred: {e}")
 #df = pd.DataFrame(data)
 
 def get_tips_from_observation(observation):
