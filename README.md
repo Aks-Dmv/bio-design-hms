@@ -1,3 +1,5 @@
+# HealthTech Wayfinder
+
 ## How to Run
 
 ```
