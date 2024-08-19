@@ -68,7 +68,7 @@ class ObservationRecord(BaseModel):
 
 if not os.path.exists(observations_csv):
     observation_keys = list(ObservationRecord.__fields__.keys())
-    observation_keys = ['observation_summary', 'observer', 'observation', 'observation_date'] + observation_keys        
+    observation_keys = ['observation_summary', 'observer', 'observation', 'observation_date', 'observation_id'] + observation_keys        
     csv_file = open(observations_csv, "w")
     csv_writer = csv.writer(csv_file, delimiter=";")
     csv_writer.writerow(observation_keys)
