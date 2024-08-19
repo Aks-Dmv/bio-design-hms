@@ -75,8 +75,8 @@ if not os.path.exists(observations_csv):
 
 def refreshObservation():
     st.session_state['observation'] = ""
-    st.session_state['result'] = ""
     st.session_state['observation_summary'] = ""
+    st.session_state['observation_date'] = ""
     
 
 def parseObservation(observation: str):
