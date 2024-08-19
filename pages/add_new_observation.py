@@ -233,6 +233,8 @@ def clear_observation():
 # default_observation_id = date.today().strftime("%Y%m%d")+"%03d"%observation_id_counter
 # st.session_state['observation_id'] = st.text_input("Observation ID:", value=default_observation_id)
 
+
+import streamlit as st
 from datetime import date
 
 # Initialize or retrieve the observation counters dictionary from session state
@@ -259,15 +261,21 @@ def update_observation_id():
     counter = st.session_state['observation_counters'][obs_date_str]
     st.session_state['observation_id'] = generate_observation_id(st.session_state['observation_date'], counter)
 
-# st calendar for date input with a callback to update the observation_id
-st.session_state['observation_date'] = st.date_input("Observation Date", date.today(), on_change=update_observation_id)
+# Use columns to place observation_date and observation_id side by side
+col1, col2 = st.columns(2)
 
-# Ensure the observation ID is set the first time the script runs
-if 'observation_id' not in st.session_state:
-    update_observation_id()
+with col1:
+    # st calendar for date input with a callback to update the observation_id
+    st.session_state['observation_date'] = st.date_input("Observation Date", date.today(), on_change=update_observation_id)
 
-# Display the observation ID
-st.text_input("Observation ID:", value=st.session_state['observation_id'], disabled=True)
+with col2:
+    # Ensure the observation ID is set the first time the script runs
+    if 'observation_id' not in st.session_state:
+        update_observation_id()
+
+    # Display the observation ID
+    st.text_input("Observation ID:", value=st.session_state['observation_id'], disabled=True)
+
 
 
 ############
