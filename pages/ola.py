@@ -24,8 +24,8 @@ try:
         st.write("Column names:", df.columns.tolist())
         
         # Select Observation ID column name (adjust based on your actual column names)
-        observation_id_col = "Observation ID"  # Update this to the correct name
-        observation_text_col = "Observation"  # Update this to the correct name
+        observation_id_col = "observation_id"  # Update this to the correct name
+        observation_text_col = "observation"  # Update this to the correct name
         
         # Create a dropdown menu for selecting Observation ID
         observation_id = st.selectbox("Select an Observation ID", df[observation_id_col])
