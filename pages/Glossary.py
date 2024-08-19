@@ -27,7 +27,7 @@ import csv
 
 st.set_page_config(page_title="Glossary", page_icon="📊")
 
-st.markdown("# Glossary (Coming Soon)")
+st.markdown("# Glossary")
 
 # If using st.secrets
 creds_dict = st.secrets["gcp_service_account"]
@@ -46,5 +46,5 @@ observation_sheet = client.open("BioDesign Observation Record").sheet1
 column_values = observation_sheet.col_values(10)  # 1 represents the first column
 
 # Display the values in the Streamlit app
-st.write("Values in the selected column:")
+st.write("New Terms:")
 st.write(column_values)
