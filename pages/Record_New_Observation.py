@@ -404,8 +404,37 @@ if st.button("Evaluate Observation"):
 if st.session_state['observation_summary'] != "":
     st.session_state['observation_summary'] = st.text_area("Generated Summary (editable):", value=st.session_state['observation_summary'], height=50)
     
+###########
+# if st.button("Add Observation to Team Record", disabled=st.session_state['observation_summary'] == ""):
+#     # st.session_state['observation_summary']  = generateObservationSummary(st.session_state['observation'])
+#     st.session_state["error"] = ""
+
+#     if st.session_state['observation'] == "":
+#         st.session_state["error"] = "Error! Please enter observation first"
+#         st.markdown(
+#             f"<span style='color:red;'>{st.session_state['error']}</span>", 
+#             unsafe_allow_html=True
+#         )
+#     elif st.session_state['observation_summary'] == "":
+#         st.session_state["error"] = "Error! Please evaluate observation first"
+#         st.markdown(
+#             f"<span style='color:red;'>{st.session_state['error']}</span>", 
+#             unsafe_allow_html=True
+#         )
+#     else:
+#         status = embedObservation(observer, st.session_state['observation'],  st.session_state['observation_summary'], 
+#                             st.session_state['observation_date'],
+#                             st.session_state['observation_id'])
+#         # st.session_state['observation_summary'] = st.text_input("Generated Summary (editable):", value=st.session_state['observation_summary'])
+#         # "Generated Summary: "+st.session_state['observation_summary']+"\n\n"
+#         if status:
+#             st.session_state['result'] = "Observation added to your team's database"
+#             refreshObservation()
+#         else:
+#             st.session_state['result'] = "Error adding observation to your team's database, try again!"
+#         # clear_observation()
+############
 if st.button("Add Observation to Team Record", disabled=st.session_state['observation_summary'] == ""):
-    # st.session_state['observation_summary']  = generateObservationSummary(st.session_state['observation'])
     st.session_state["error"] = ""
 
     if st.session_state['observation'] == "":
@@ -424,14 +453,13 @@ if st.button("Add Observation to Team Record", disabled=st.session_state['observ
         status = embedObservation(observer, st.session_state['observation'],  st.session_state['observation_summary'], 
                             st.session_state['observation_date'],
                             st.session_state['observation_id'])
-        # st.session_state['observation_summary'] = st.text_input("Generated Summary (editable):", value=st.session_state['observation_summary'])
-        # "Generated Summary: "+st.session_state['observation_summary']+"\n\n"
         if status:
             st.session_state['result'] = "Observation added to your team's database"
             refreshObservation()
+            st.experimental_rerun()  # This will refresh the page
         else:
             st.session_state['result'] = "Error adding observation to your team's database, try again!"
-        # clear_observation()
+##########
 
 # st.write(f":green[{st.session_state['result']}]")
 st.markdown(st.session_state['result'], unsafe_allow_html=True)
