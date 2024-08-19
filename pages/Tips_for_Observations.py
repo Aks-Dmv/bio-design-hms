@@ -109,27 +109,29 @@ Observation: {observation}
 Output:"""
 )
 
-    observation_chain = (
-        observation_prompt | llm | StrOutputParser()
-    )
+#tips function
 
-    with get_openai_callback() as cb:
-        output = observation_chain.invoke({"observation": observation, "questions_list": questions_list})
+observation_chain = (
+observation_prompt | llm | StrOutputParser()
+)
 
-    return output
+with get_openai_callback() as cb:
+output = observation_chain.invoke({"observation": observation, "questions_list": questions_list})
 
-# Display each observation
-for index, row in df.iterrows():
-    st.markdown(f"### {row['observation_title']}")
-    st.markdown(f"**Date:** {row['observation_date']}")
-    st.markdown(f"**Observer:** {row['observer']}")
-    st.markdown(f"**Observation:** {row['observation']}")
+return output
+
+# # Display each observation
+# for index, row in df.iterrows():
+#     st.markdown(f"### {row['observation_title']}")
+#     st.markdown(f"**Date:** {row['observation_date']}")
+#     st.markdown(f"**Observer:** {row['observer']}")
+#     st.markdown(f"**Observation:** {row['observation']}")
     
-    if st.button(f"Get Tips for this Observation", key=f"tips_button_{index}"):
-        tips = get_tips_from_observation(row['observation'])
-        st.markdown(tips)
+#     if st.button(f"Get Tips for this Observation", key=f"tips_button_{index}"):
+#         tips = get_tips_from_observation(row['observation'])
+#         st.markdown(tips)
     
-    st.markdown("---")
+#     st.markdown("---")
 
 st.markdown("---")
 
