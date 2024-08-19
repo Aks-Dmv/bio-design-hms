@@ -4,7 +4,7 @@ from streamlit_extras.switch_page_button import switch_page
 
 def main():
     st.markdown("<h2 style='text-align: center;'>Welcome back!</h2>", unsafe_allow_html=True)
-    st.markdown("<h1 style='text-align: center;'>BioDesign Copilot</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center;'>HealthTech WayFinder</h1>", unsafe_allow_html=True)
     # st.markdown("<h3 style='text-align: center;'>Need Statement Assistant (Coming Soon) </h3>", unsafe_allow_html=True)
     # st.markdown("<h3 style='text-align: center;'>Observation Assistant</h3>", unsafe_allow_html=True)
 
