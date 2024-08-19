@@ -107,9 +107,11 @@ for term in sorted_terms:
     capitalized_term = term.capitalize()
     definition = get_definition(term)
     st.markdown(f"""
-- **{capitalized_term}** ({term_counts[capitalized_term]}): {definition}  
-  *Relevant observation IDs:*  
-  {relevant_observation_ids[capitalized_term]}
+<ul>
+    <li><b>{capitalized_term}</b> ({term_counts[capitalized_term]}): {definition}<br>
+    <i>Relevant observation IDs:</i><br>
+    {relevant_observation_ids[capitalized_term]}</li>
+</ul>
 """)
 
 
