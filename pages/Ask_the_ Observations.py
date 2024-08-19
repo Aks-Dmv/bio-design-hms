@@ -122,34 +122,26 @@ if prompt := st.chat_input("What would you like to ask?"):
 
 st.markdown("---")
 
-# Add custom CSS for a larger button
+# Add custom CSS to position the "Back to Main Menu" button at the bottom of the page
 st.markdown("""
     <style>
-    .big-button-container {
-        display: flex;
-        justify-content: center;
-    }
-    .big-button {
-        font-size: 20px;
-        padding: 10px 40px;
-        background-color: #365980; /* blueish color */
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #365980;
         color: white;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
         text-align: center;
-    }
-    .big-button:hover {
-        background-color: #c2c2c2; /* Grey */
+        padding: 10px;
     }
     </style>
     """, unsafe_allow_html=True)
 
-# Create a container to hold the button with the custom class
+# Create a footer with the "Back to Main Menu" button
 st.markdown("""
-    <div class="big-button-container">
+    <div class="footer">
         <button class="big-button" onclick="window.location.href='/?page=main_menu'">Back to Main Menu</button>
     </div>
     """, unsafe_allow_html=True)
-
 
