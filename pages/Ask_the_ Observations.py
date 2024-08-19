@@ -116,6 +116,40 @@ if prompt := st.chat_input("What would you like to ask?"):
     # Store chat in the current sheet
     st.session_state.chat_sheet.append_row([st.session_state.messages[-2]['content'], st.session_state.messages[-1]['content']])
 
+# st.markdown("---")
+# if st.button("Back to Main Menu"):
+#     switch_page("main_menu")
+
 st.markdown("---")
-if st.button("Back to Main Menu"):
-    switch_page("main_menu")
+
+# Add custom CSS for a larger button
+st.markdown("""
+    <style>
+    .big-button-container {
+        display: flex;
+        justify-content: center;
+    }
+    .big-button {
+        font-size: 25px;
+        padding: 10px 60px;
+        background-color: #365980; /* blueish color */
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+    }
+    .big-button:hover {
+        background-color: #c2c2c2; /* Grey */
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+# Create a container to hold the button with the custom class
+st.markdown("""
+    <div class="big-button-container">
+        <button class="big-button" onclick="window.location.href='/?page=main_menu'">Back to Main Menu</button>
+    </div>
+    """, unsafe_allow_html=True)
+
+
