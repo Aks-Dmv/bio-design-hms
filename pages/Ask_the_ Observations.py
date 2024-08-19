@@ -125,7 +125,7 @@ st.markdown("---")
 # Spacer to push the button to the bottom
 
 # Add a spacer to push the button to the bottom of the page
-st.write("" * 50)
+st.write("\n" * 50)
 # Add custom CSS for a larger button
 st.markdown("""
     <style>
