@@ -73,5 +73,5 @@ with col2:
 
 st.markdown("---")
     
-    if st.button("Log Out"):
-            switch_page("../app.py")
+if st.button("Log Out"):
+    switch_page("../app.py")
