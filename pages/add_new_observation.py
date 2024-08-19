@@ -289,7 +289,7 @@ if st.session_state['observation_summary'] != "":
 
 # with col1:
 if st.button("Validate Observation"):
-st.session_state['result'] = extractObservationFeatures(st.session_state['observation'])
+    st.session_state['result'] = extractObservationFeatures(st.session_state['observation'])
 
 # with col2:
 if st.button("Add Observation to Team Record"):
