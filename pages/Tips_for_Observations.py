@@ -45,7 +45,29 @@ st.markdown("# Tips for Observations")
 
 # df = pd.read_csv("observations.csv", delimiter=';')
 # Convert the sheet to a pandas DataFrame
-data = sheet.get_all_records()
+# data = sheet.get_all_records()
+
+# Open the Google Sheet and get the first worksheet
+sheet = client.open("BioDesign Observation Record").sheet1
+
+# Try to get all records, if that fails, try to get all values
+try:
+    data = sheet.get_all_records()  # This assumes the first row is headers
+    if not data:  # If the sheet is empty, this will be an empty list
+        st.error("The Google Sheet appears to be empty.")
+    else:
+        df = pd.DataFrame(data)
+except Exception as e:
+    st.error(f"An error occurred: {e}")
+    # Fallback to using get_all_values() if get_all_records() fails
+    values = sheet.get_all_values()
+    if not values:
+        st.error("The Google Sheet appears to be empty.")
+    else:
+        # Convert the raw values to a DataFrame
+        headers = values.pop(0)
+        df = pd.DataFrame(values, columns=headers)
+
 df = pd.DataFrame(data)
 
 def get_tips_from_observation(observation):
