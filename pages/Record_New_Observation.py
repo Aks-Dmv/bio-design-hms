@@ -51,16 +51,15 @@ creds_dict = {
 
 if 'observation' not in st.session_state:
     st.session_state['observation'] = ""
+
 if 'result' not in st.session_state:
     st.session_state['result'] = ""
+
 if 'observation_summary' not in st.session_state:
     st.session_state['observation_summary'] = ""
 
 if 'observation_date' not in st.session_state:
     st.session_state['observation_date'] = date.today()
-    
-if 'observation_id' not in st.session_state:
-    st.session_state['observation_id'] = ""
 
 if 'rerun' not in st.session_state:
     st.session_state['rerun'] = False
@@ -81,11 +80,6 @@ if not os.path.exists(observations_csv):
     csv_file = open(observations_csv, "w")
     csv_writer = csv.writer(csv_file, delimiter=";")
     csv_writer.writerow(observation_keys)
-
-def refreshObservation():
-    st.session_state['observation'] = ""
-    st.session_state['observation_summary'] = ""
-    
 
 def parseObservation(observation: str):
     llm = ChatOpenAI(
@@ -244,17 +238,6 @@ def clear_observation():
     st.session_state['observation_date'] = ""
     st.session_state['result'] = ""
     st.session_state['error'] = ""
-
-# st.session_state['observation_summary'] = st.text_input("Observation Title:", value=st.session_state['observation_summary'])
-
-# # st calendar for date input
-# st.session_state['observation_date'] = st.date_input("Observation Date", date.today())
-
-# # add input called observation_id with default value of current date
-# observation_id_counter = 1
-# default_observation_id = date.today().strftime("%Y%m%d")+"%03d"%observation_id_counter
-# st.session_state['observation_id'] = st.text_input("Observation ID:", value=default_observation_id)
-
 
 import streamlit as st
 from datetime import date
@@ -417,8 +400,7 @@ st.markdown(st.session_state['result'], unsafe_allow_html=True)
 
 if st.session_state['rerun']:
     time.sleep(5)
-    st.session_state['rerun'] = False
-    st.experimental_rerun()
+    clear_observation()
 
 ##########
 if st.button("Add Observation to Team Record", disabled=st.session_state['observation_summary'] == ""):
