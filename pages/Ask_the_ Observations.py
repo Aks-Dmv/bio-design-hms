@@ -138,9 +138,12 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# Create a footer with the "Back to Main Menu" button
+# Add a spacer to push the button to the bottom of the page
+st.write("\n" * 20)
+
+# Create a container to hold the button with the custom class
 st.markdown("""
-    <div class="footer">
+    <div style="text-align: center;">
         <button class="big-button" onclick="window.location.href='/?page=main_menu'">Back to Main Menu</button>
     </div>
     """, unsafe_allow_html=True)
