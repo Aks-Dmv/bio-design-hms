@@ -103,3 +103,38 @@ for term, count in sorted_terms.items():
     definition = get_definition(term)
     st.write(f"- **{capitalized_term}** ({count}): {definition}")
 
+
+
+st.markdown("---")
+
+# Add custom CSS for a larger button
+st.markdown("""
+    <style>
+    .big-button-container {
+        display: flex;
+        justify-content: center;
+    }
+    .big-button {
+        font-size: 20px;
+        padding: 10px 60px;
+        background-color: #365980; /* blueish color */
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+    }
+    .big-button:hover {
+        background-color: #c2c2c2; /* Grey */
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+# Create a container to hold the button with the custom class
+st.markdown("""
+    <div class="big-button-container">
+        <button class="big-button" onclick="window.location.href='/?page=main_menu'">Back to Main Menu</button>
+    </div>
+    """, unsafe_allow_html=True)
+
+
