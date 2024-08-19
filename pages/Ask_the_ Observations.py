@@ -128,13 +128,18 @@ st.markdown("---")
 st.write("\n" * 50)
 # Add custom CSS for a larger button
 st.markdown("""
+    
+    
     <style>
-    .big-button-container {
-
+    .main {
+        min-height: 100vh;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        margin-top: auto;
+    }
+    .big-button-container {
+        display: flex;
+        justify-content: center;
     }
     .big-button {
         font-size: 20px;
