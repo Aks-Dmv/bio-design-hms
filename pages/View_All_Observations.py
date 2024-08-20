@@ -143,7 +143,7 @@ st.markdown("""
 
 # Create a button using Streamlit's native functionality
 if st.button("Back to Main Menu"):
-    st.experimental_set_query_params(page="main_menu")
+    switch_page("main_menu")
 
 
 
