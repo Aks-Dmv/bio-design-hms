@@ -340,12 +340,8 @@ with col3:
 st.session_state['observation'] = st.text_area("Add Your Observation", value=st.session_state['observation'], placeholder="Enter your observation...", height=200)
 
 
-
 # Button to Clear the Observation Text Area
-if st.button("Clear Observation"):
-    st.session_state["observation_text"] = " "  # Set to a space to avoid reloading issues
-    st.experimental_set_query_params()  # This forces a slight refresh
-    st.session_state["observation_text"] = ""  # Immediately set back to empty string
+st.button("Clear Observation", on_click=clear_text)
 
 
 # Container for result display
