@@ -27,12 +27,12 @@ def main():
         ('Observation Assistant', 'Need Statement Assistant (Coming Soon)'),
         index=0  # 0 is the index for the default option 'Observation Assistant'
     )
-
+    st.write("")
     if st.button("Sign In"):
         st.info("New licenses coming soon!")
     
     # Login Form
-    st.write("")
+
     st.write("")
     st.write("Login:")
     username = st.text_input("Username:", key="username")
