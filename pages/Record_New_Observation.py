@@ -26,7 +26,7 @@ import csv
 
 st.set_page_config(page_title="Add a New Observation", page_icon="🔍")
 
-st.markdown("# Add New Observation")
+st.markdown("# Add a New Observation")
 
 
 observations_csv = "observations.csv"
