@@ -136,7 +136,7 @@ if __name__ == "__main__":
         st.session_state["login_status"] = "not_logged_in"
 
     if st.session_state["login_status"] == "success":
-        switch_page("main_menu")
+        switch_page("Menu")
     else:
         main()
 
