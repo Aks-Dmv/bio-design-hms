@@ -31,23 +31,41 @@ def main():
     if st.button("Sign In"):
         st.info("New licenses coming soon!")
     
-    # Login Form
+    # # Login Form
 
-    st.write("")
+    # st.write("")
+    # st.write("Login:")
+    # username = st.text_input("Username:", key="username")
+    # password = st.text_input("Password:", type="password", key="password")
+    # stay_logged_in = st.checkbox("Stay logged in")
+
+    # user_list = st.secrets["login-credentials"]
+
+    # if st.button("Submit"):
+    #     for user_dict in user_list:
+    #         if username == user_dict["username"] and password == user_dict["password"]:
+    #             st.success("Login successful")
+    #             st.session_state["login_status"] = "success"
+    #             st.rerun()
+    #     st.error("Try again please")
+
+    with st.form(key="login_form"):
     st.write("Login:")
     username = st.text_input("Username:", key="username")
     password = st.text_input("Password:", type="password", key="password")
     stay_logged_in = st.checkbox("Stay logged in")
 
-    user_list = st.secrets["login-credentials"]
+    submit_button = st.form_submit_button("Submit")
 
-    if st.button("Submit"):
-        for user_dict in user_list:
-            if username == user_dict["username"] and password == user_dict["password"]:
-                st.success("Login successful")
-                st.session_state["login_status"] = "success"
-                st.rerun()
-        st.error("Try again please")
+if submit_button:
+    user_list = st.secrets["login-credentials"]
+    for user_dict in user_list:
+        if username == user_dict["username"] and password == user_dict["password"]:
+            st.success("Login successful")
+            st.session_state["login_status"] = "success"
+            st.rerun()
+    st.error("Try again please")
+
 
 
 # if __name__ == "__main__":
