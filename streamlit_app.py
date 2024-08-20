@@ -22,8 +22,20 @@ def main():
     # st.markdown("<h3 style='text-align: center;'>Need Statement Assistant (Coming Soon) </h3>", unsafe_allow_html=True)
     # st.markdown("<h3 style='text-align: center;'>Observation Assistant</h3>", unsafe_allow_html=True)
 
-    # Make the "Choose an assistant" text bigger
-    st.markdown("<h3 style='font-size:24px; margin-bottom: 0;'>Choose an Assistant:</h3>", unsafe_allow_html=True)
+    # Make the "Choose an assistant" text bigger and remove space below it
+    st.markdown("""
+        <style>
+        .assistant-label {
+            font-size: 20px;
+            margin-bottom: 0px;
+        }
+        .stSelectbox {
+            margin-top: -20px;
+        }
+        </style>
+        <h3 class='assistant-label'>Choose an assistant:</h3>
+        """, unsafe_allow_html=True)
+
 
     assistant = st.selectbox(
         '',
