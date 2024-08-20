@@ -46,6 +46,9 @@ def main():
                 st.rerun()
         st.error("Try again please")
 
+    if st.button("New Licenses"):
+        st.info("New licenses coming soon!")
+
 # if __name__ == "__main__":
 #     st.set_page_config(initial_sidebar_state="collapsed")
 
