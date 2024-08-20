@@ -233,9 +233,12 @@ Output Summary:"""
 
 
 def clear_observation():
-    st.session_state['observation'] = ""
-    st.session_state['observation_summary'] = ""
-    st.session_state['result'] = ""
+    if 'observation' in st.session_state:
+        st.session_state['observation'] = ""
+    if 'observation_summary' in st.session_state:
+        st.session_state['observation_summary'] = ""
+    if 'result' in st.session_state:
+        st.session_state['result'] = ""
     update_observation_id()
 
 import streamlit as st
@@ -426,6 +429,12 @@ with col1:
         st.rerun()
     
     ##########
+
+with col2:
+    pass
+
+st.markdown("---")
+
 if st.button("Add Observation to Team Record", disabled=st.session_state['observation_summary'] == ""):
     # st.session_state['observation_summary']  = generateObservationSummary(st.session_state['observation'])
     st.session_state["error"] = ""
