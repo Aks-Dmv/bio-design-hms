@@ -74,12 +74,15 @@ llm = ChatOpenAI(
     max_tokens=500,
 )
 
-db = PineconeVectorStore(
-    index_name=st.secrets["pinecone-keys"]["index_to_connect"],
-    namespace="observations",
-    embedding=OpenAIEmbeddings(api_key=OPENAI_API_KEY),
-    pinecone_api_key=st.secrets["pinecone-keys"]["api_key"],
-)
+
+def refresh_db():
+    db = PineconeVectorStore(
+        index_name=st.secrets["pinecone-keys"]["index_to_connect"],
+        namespace="observations",
+        embedding=OpenAIEmbeddings(api_key=OPENAI_API_KEY),
+        pinecone_api_key=st.secrets["pinecone-keys"]["api_key"],
+    )
+    return db
 
 # Handle new input
 if prompt := st.chat_input("What would you like to ask?"):
@@ -88,7 +91,8 @@ if prompt := st.chat_input("What would you like to ask?"):
         st.markdown(prompt)
 
     # Perform similarity search using Pinecone
-    related_observations = db.similarity_search(prompt, k=10)
+    updated_db = refresh_db()
+    related_observations = updated_db.similarity_search(prompt, k=10)
 
     question_prompt = PromptTemplate.from_template(
         # """
