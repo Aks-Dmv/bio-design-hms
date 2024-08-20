@@ -66,7 +66,7 @@ st.markdown("<h3 style='text-align: center;'>What would you like to do?</h3>", u
 
 
 # # def main():
-# st.markdown("<h1 style='text-align: center;'>HealthTech WayFinder</h1>", unsafe_allow_html=True)
+# st.markdown("<h1 style='text-align: center;'>HealthTech Wayfinder</h1>", unsafe_allow_html=True)
 # st.markdown("<h3 style='text-align: center;'>What would you like to do?</h3>", unsafe_allow_html=True)
 
 col1, col2 = st.columns([1, 3])
