@@ -86,7 +86,39 @@ df = pd.read_csv("observations.csv", delimiter=';')
 
 st.markdown("---")
 
-# Add custom CSS for a larger button
+# # Add custom CSS for a larger button
+# st.markdown("""
+#     <style>
+#     .big-button-container {
+#         display: flex;
+#         justify-content: center;
+#     }
+#     .big-button {
+#         font-size: 20px;
+#         padding: 10px 60px;
+#         background-color: #365980; /* blueish color */
+#         color: white;
+#         border: none;
+#         border-radius: 8px;
+#         cursor: pointer;
+#         text-align: center;
+#     }
+#     .big-button:hover {
+#         background-color: #c2c2c2; /* Grey */
+#     }
+#     </style>
+#     """, unsafe_allow_html=True)
+
+# # Create a container to hold the button with the custom class
+# st.markdown("""
+#     <div class="big-button-container">
+#         <button class="big-button" onclick="window.location.href='/?page=main_menu'">Back to Main Menu</button>
+#     </div>
+#     """, unsafe_allow_html=True)
+
+import streamlit as st
+
+# Create a container to hold the button with the custom class
 st.markdown("""
     <style>
     .big-button-container {
@@ -109,12 +141,9 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# Create a container to hold the button with the custom class
-st.markdown("""
-    <div class="big-button-container">
-        <button class="big-button" onclick="window.location.href='/?page=main_menu'">Back to Main Menu</button>
-    </div>
-    """, unsafe_allow_html=True)
+# Create a button using Streamlit's native functionality
+if st.button("Back to Main Menu"):
+    st.experimental_set_query_params(page="main_menu")
 
 
 
