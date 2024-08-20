@@ -63,18 +63,18 @@ def main():
 
 col1, col2 = st.columns([1, 1])
 
-    with col1:
-        if st.button("Submit"):
-            for user_dict in user_list:
-                if username == user_dict["username"] and password == user_dict["password"]:
-                    st.success("Login successful")
-                    st.session_state["login_status"] = "success"
-                    st.rerun()
-            st.error("Try again please")
+with col1:
+    if st.button("Submit"):
+        for user_dict in user_list:
+            if username == user_dict["username"] and password == user_dict["password"]:
+                st.success("Login successful")
+                st.session_state["login_status"] = "success"
+                st.rerun()
+        st.error("Try again please")
 
-    with col2:
-        if st.button("New Licenses"):
-            st.info("New licenses coming soon!")
+ with col2:
+    if st.button("New Licenses"):
+        st.info("New licenses coming soon!")
 
 if __name__ == "__main__":
     st.set_page_config(initial_sidebar_state="collapsed")
