@@ -343,7 +343,8 @@ st.session_state['observation'] = st.text_area("Add Your Observation", value=st.
 
 # Button to Clear the Observation Text Area
 if st.button("Clear Observation"):
-    st.session_state["observation_text"] = ""
+    st.session_state["observation_text"] = ""  # Clear the session state
+    st.experimental_rerun()  # Force a rerun to update the text area
 
 
 # Container for result display
