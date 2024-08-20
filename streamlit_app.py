@@ -66,8 +66,6 @@ if submit_button:
             st.rerun()
     st.error("Try again please")
 
-
-
 # if __name__ == "__main__":
 #     st.set_page_config(initial_sidebar_state="collapsed")
 
@@ -97,6 +95,22 @@ if submit_button:
 # with col2:
 #     if st.button("New Licenses"):
 #         st.info("New licenses coming soon!")
+############3
+
+# if __name__ == "__main__":
+#     st.set_page_config(initial_sidebar_state="collapsed")
+
+#     if "login_status" not in st.session_state:
+#         st.session_state["login_status"] = "not_logged_in"
+
+#     if st.session_state["login_status"] == "success":
+#         # st.query_params(page="main_menu")
+#         # st.query_params[''] = "main_menu"
+#         # # st.page_link("pages/main_menu.py")
+#         # st.rerun()
+#         switch_page("main_menu")
+#     else:
+#         main()
 
 if __name__ == "__main__":
     st.set_page_config(initial_sidebar_state="collapsed")
@@ -105,10 +119,7 @@ if __name__ == "__main__":
         st.session_state["login_status"] = "not_logged_in"
 
     if st.session_state["login_status"] == "success":
-        # st.query_params(page="main_menu")
-        # st.query_params[''] = "main_menu"
-        # # st.page_link("pages/main_menu.py")
-        # st.rerun()
         switch_page("main_menu")
     else:
         main()
+
