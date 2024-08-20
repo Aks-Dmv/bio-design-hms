@@ -92,7 +92,11 @@ st.markdown("---")
 col1, col2, col3 = st.columns([3, 1, 1])
 with col3:
     if st.button("Log Out"):
-        switch_page("/")
+        # switch_page("/")
+
+    # Adjust the URL to the correct path of your main script
+        st.markdown('<meta http-equiv="refresh" content="0; url=/streamlit_app" />', unsafe_allow_html=True)
+
 
 #    if st.button("Go to Main"):
 #        st.markdown('<meta http-equiv="refresh" content="0; url=./" />', unsafe_allow_html=True)
