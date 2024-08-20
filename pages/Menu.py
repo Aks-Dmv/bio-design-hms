@@ -72,19 +72,19 @@ st.markdown("<h3 style='text-align: center;'>What would you like to do?</h3>", u
 col1, col2 = st.columns([1, 3])
 with col2:
     if st.button("🔍 Record a New Observation"):
-        switch_page("add_new_observation")
+        switch_page("Record_New_Observation")
 
     if st.button("✅ Tips for your Observations"):
-        switch_page("enhance_observation")
+        switch_page("Tips_for_Observations")
 
     if st.button("❓ Ask the team's Observations"):
         switch_page("Ask_the_Observations")
 
     if st.button("📊 Glossary"):
-        switch_page("glossary")
+        switch_page("Glossary")
 
     if st.button("📊 View All Observations"):
-        switch_page("view_dataset")
+        switch_page("View_All_Observations")
 
 st.markdown("---")
     
