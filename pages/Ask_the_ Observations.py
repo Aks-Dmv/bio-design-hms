@@ -84,6 +84,20 @@ def refresh_db():
     )
     return db
 
+def get_sheet_as_dict():
+    scope = [
+        "https://www.googleapis.com/auth/spreadsheets",
+        "https://www.googleapis.com/auth/drive.metadata.readonly"
+        ]
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
+    client = gspread.authorize(creds)
+    observation_sheet = client.open("BioDesign Observation Record").sheet1
+    data = observation_sheet.get_all_records()
+    return data
+
+if 'observation_google_sheet' not in st.session_state:
+    st.session_state['observation_google_sheet'] = get_sheet_as_dict()
+
 # Handle new input
 if prompt := st.chat_input("What would you like to ask?"):
     st.session_state.messages.append({"role": "user", "content": prompt})
@@ -91,23 +105,18 @@ if prompt := st.chat_input("What would you like to ask?"):
         st.markdown(prompt)
 
     # Perform similarity search using Pinecone
-    updated_db = refresh_db()
-    related_observations = updated_db.similarity_search(prompt, k=10)
+    # updated_db = refresh_db()
+    # related_observations = updated_db.similarity_search(prompt, k=10)
+    related_observations = st.session_state['observation_google_sheet'] # Placeholder for now
 
     question_prompt = PromptTemplate.from_template(
-        # """
-        # You are a helpful assistant trained in the Stanford Biodesign process that can answer questions about given observations of health care procedures. 
-        # You have to use the related observations to help answer the question. Cite the observations with relevant quotes and observation IDs to back your answer.
-        
-        # Question: {question}
-        # Related Observations: {related_observations}
-        # """
-                """
+          """
         You are a helpful assistant trained in the Stanford Biodesign process that can answer questions about given observations of health care procedures. 
-        You have to use the related observations to help answer the question. Cite the observations with relevant quotes and observation IDs to back your answer.
+        You have to use the related observations from the set of observations to help answer the question. Cite the relevant observations with relevant quotes and observation IDs to back your answer.
         
         Question: {question}
-        Answer: {related_observations}
+        Set of Observations: {related_observations}
+        Answer:
          """
     )
     
