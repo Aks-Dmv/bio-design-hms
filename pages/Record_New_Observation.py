@@ -24,7 +24,7 @@ import json
 import os
 import csv
 
-st.set_page_config(page_title="Add New Observation", page_icon="🔍")
+st.set_page_config(page_title="Add A New Observation", page_icon="🔍")
 
 st.markdown("# Add New Observation")
 
