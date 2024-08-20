@@ -351,10 +351,19 @@ if "observation_text" not in st.session_state:
 def clear_text():
     st.session_state["observation_text"] = ""
 
+st.markdown("---")
 
 # Observation Text Area
-st.write("Add Your Observation:")
+##
+
+#observation_text = st.text_area("Observation", value=st.session_state["observation_text"], height=200, key="observation_text")
+
+# Add Your Observation Text with larger font size
+st.markdown("<h4 style='font-size:20px;'>Add Your Observation:</h4>", unsafe_allow_html=True)
+
+# Observation Text Area
 observation_text = st.text_area("Observation", value=st.session_state["observation_text"], height=200, key="observation_text")
+
 
 # Create columns to align the buttons
 col1, col2, col3 = st.columns([2, 2, 2])  # Adjust column widths as needed
