@@ -351,19 +351,23 @@ if "observation_text" not in st.session_state:
 def clear_text():
     st.session_state["observation_text"] = ""
 
+# Create columns to align the buttons
+col1, col2, col3 = st.columns([1, 1, 2])  # Adjust column widths as needed
+
 # Observation Text Area
 st.write("Add Your Observation:")
 observation_text = st.text_area("Observation", value=st.session_state["observation_text"], height=200, key="observation_text")
 
-# Button to Clear the Observation Text Area
-st.button("Clear Observation", on_click=clear_text)
+with col3:
+    # Button to Clear the Observation Text Area
+    st.button("Clear Observation", on_click=clear_text)
+    
+    
+    # Container for result display
+    result_container = st.empty()
 
-
-# Container for result display
-result_container = st.empty()
-
-#Use columns to place buttons side by side
-col11, col21 = st.columns(2)
+# #Use columns to place buttons side by side
+# col11, col21 = st.columns(2)
 
 
 # with col11:
@@ -374,24 +378,24 @@ col11, col21 = st.columns(2)
 #         st.session_state['observation_summary'] = st.text_area("Generated Summary (editable):", value=st.session_state['observation_summary'], height=50)
     
 
-# with col11:
-if st.button("Evaluate Observation"):
-    st.session_state['result'] = extractObservationFeatures(st.session_state['observation'])
-    st.session_state['observation_summary']  = generateObservationSummary(st.session_state['observation'])
-
-if st.session_state['observation_summary'] != "":
-    st.session_state['observation_summary'] = st.text_area("Generated Summary (editable):", value=st.session_state['observation_summary'], height=50)
-
-# st.write(f":green[{st.session_state['result']}]")
-st.markdown(st.session_state['result'], unsafe_allow_html=True)
-
-if st.session_state['rerun']:
-    time.sleep(3)
-    clear_observation()
-    st.session_state['rerun'] = False
-    st.rerun()
-
-##########
+with col1:
+    if st.button("Evaluate Observation"):
+        st.session_state['result'] = extractObservationFeatures(st.session_state['observation'])
+        st.session_state['observation_summary']  = generateObservationSummary(st.session_state['observation'])
+    
+    if st.session_state['observation_summary'] != "":
+        st.session_state['observation_summary'] = st.text_area("Generated Summary (editable):", value=st.session_state['observation_summary'], height=50)
+    
+    # st.write(f":green[{st.session_state['result']}]")
+    st.markdown(st.session_state['result'], unsafe_allow_html=True)
+    
+    if st.session_state['rerun']:
+        time.sleep(3)
+        clear_observation()
+        st.session_state['rerun'] = False
+        st.rerun()
+    
+    ##########
 if st.button("Add Observation to Team Record", disabled=st.session_state['observation_summary'] == ""):
     # st.session_state['observation_summary']  = generateObservationSummary(st.session_state['observation'])
     st.session_state["error"] = ""
