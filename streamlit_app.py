@@ -49,7 +49,7 @@ def main():
     #             st.rerun()
     #     st.error("Try again please")
 
-    with st.form(key="login_form"):
+with st.form(key="login_form"):
     st.write("Login:")
     username = st.text_input("Username:", key="username")
     password = st.text_input("Password:", type="password", key="password")
