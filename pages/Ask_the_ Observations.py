@@ -93,7 +93,7 @@ if prompt := st.chat_input("What would you like to ask?"):
     question_prompt = PromptTemplate.from_template(
         """
         You are a helpful assistant trained in the Stanford biodesign process that can answer questions about given observations of medical procedures. 
-        You have to use the related observations to help answer the question. Cite the observations with relevant quotes to back your answer.
+        You have to use the related observations to help answer the question. Cite the observations with relevant quotes to back your answer. The format for citations are \"quote\"(author, date like MM-DD-YY).
         
         Question: {question}
         Related Observations: {related_observations}
