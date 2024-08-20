@@ -30,10 +30,10 @@ def main():
             margin-bottom: -10px;
         }
         .stSelectbox {
-            margin-top: -30px;
+            margin-top: -20px;
         }
         </style>
-        <h3 class='assistant-label'>Choose an assistant:</h3>
+        <h3 class='assistant-label'>Choose an Assistant:</h3>
         """, unsafe_allow_html=True)
 
 
@@ -43,6 +43,7 @@ def main():
         index=0  # 0 is the index for the default option 'Observation Assistant'
     )
 
+    st.markdown("--")
     
     st.write("")
     if st.button("Sign In"):
