@@ -26,7 +26,7 @@ def main():
     st.markdown("<h3 style='font-size:24px;'>Choose an assistant:</h3>", unsafe_allow_html=True)
 
     assistant = st.selectbox(
-        '',
+        ,
         ('Observation Assistant', 'Need Statement Assistant (Coming Soon)'),
         index=0  # 0 is the index for the default option 'Observation Assistant'
     )
