@@ -160,7 +160,7 @@ st.markdown("""
 # Create a container to hold the button with the custom class
 st.markdown("""
     <div class="big-button-container">
-        <button class="big-button" onclick="window.location.href='/?page=main_menu'">Back to Main Menu</button>
+        <button class="big-button" onclick="window.location.href='/?page=menu'">Back to Main Menu</button>
     </div>
     """, unsafe_allow_html=True)
 
