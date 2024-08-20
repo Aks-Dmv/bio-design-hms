@@ -361,21 +361,40 @@ col1, col2, col3 = st.columns([2, 2, 2])  # Adjust column widths as needed
 
 with col3:
     # Use custom CSS for the red button
-    st.markdown("""
-        <style>
-        .stButton > button {
-            background-color: #942124;
-            color: white;
-            font-size: 16px;
-            padding: 10px 20px;
-            border-radius: 8px;
-            border: none;
-        }
-        .stButton > button:hover {
-            background-color: darkred;
-        }
-        </style>
-        """, unsafe_allow_html=True)
+    # st.markdown("""
+    #     <style>
+    #     .stButton > button {
+    #         background-color: #942124;
+    #         color: white;
+    #         font-size: 16px;
+    #         padding: 10px 20px;
+    #         border-radius: 8px;
+    #         border: none;
+    #     }
+    #     .stButton > button:hover {
+    #         background-color: darkred;
+    #     }
+    #     </style>
+    #     """, unsafe_allow_html=True)
+
+    clear_button_style = """
+    <style>
+    .clear-button {
+        background-color: red;
+        color: white;
+        font-size: 16px;
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+    }
+    .clear-button:hover {
+        background-color: darkred;
+    }
+    </style>
+    """
+    st.markdown(clear_button_style, unsafe_allow_html=True)
+
 
     # Button to Clear the Observation Text Area
     st.button("Clear Observation", on_click=clear_text)
