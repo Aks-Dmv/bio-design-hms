@@ -345,19 +345,19 @@ with col3:
 
 
 # Initialize the observation text in session state if it doesn't exist
-if "observation_text" not in st.session_state:
-    st.session_state["observation_text"] = ""
+if "observation" not in st.session_state:
+    st.session_state["observation"] = ""
 
 # Function to clear the text area
 def clear_text():
-    st.session_state["observation_text"] = ""
+    st.session_state["observation"] = ""
 
 #st.markdown("---")
 
 # Observation Text Area
 ##
 
-#observation_text = st.text_area("Observation", value=st.session_state["observation_text"], height=200, key="observation_text")
+#observation_text = st.text_area("Observation", value=st.session_state["observation"], height=200, key="observation")
 
 # Add Your Observation Text with larger font size
 st.markdown("<h4 style='font-size:20px;'>Add Your Observation:</h4>", unsafe_allow_html=True)
@@ -367,7 +367,7 @@ if st.button("🎤 Record Observation (Coming Soon)"):
     st.info("Voice recording feature coming soon!")
 
 # Observation Text Area
-observation_text = st.text_area("Observation:", value=st.session_state["observation_text"], height=200, key="observation_text")
+observation_text = st.text_area("Observation:", value=st.session_state["observation"], height=200, key="observation")
 
 
 # Create columns to align the buttons
