@@ -11,7 +11,7 @@ def main():
     st.markdown(
         f"""
         <div style="text-align: center;">
-            <h1>HealthTech WayFinder</h1>
+            <h1>HealthTech Wayfinder</h1>
              <img src="{logo_url}" alt="Logo" style="width:350px; height:auto;">
         </div>
         """,
