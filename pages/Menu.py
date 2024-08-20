@@ -92,4 +92,4 @@ st.markdown("---")
 col1, col2, col3 = st.columns([3, 1, 1])
 with col3:
     if st.button("Log Out"):
-        switch_page("https://bio-design-hms.streamlit.app")
+        switch_page("streamlit_app")
