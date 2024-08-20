@@ -27,6 +27,9 @@ def main():
         ('Observation Assistant', 'Need Statement Assistant (Coming Soon)'),
         index=0  # 0 is the index for the default option 'Observation Assistant'
     )
+
+    if st.button("Sign In"):
+        st.info("New licenses coming soon!")
     
     # Login Form
     st.write("")
@@ -46,8 +49,6 @@ def main():
                 st.rerun()
         st.error("Try again please")
 
-    if st.button("New Licenses"):
-        st.info("New licenses coming soon!")
 
 # if __name__ == "__main__":
 #     st.set_page_config(initial_sidebar_state="collapsed")
