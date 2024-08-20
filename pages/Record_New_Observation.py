@@ -343,6 +343,10 @@ with col3:
 
 # ######
 
+# Button for voice input (currently as a placeholder)
+if st.button("🎤 Record Observation (Coming Soon)"):
+    st.info("Voice recording feature coming soon!")
+
 # Initialize the observation text in session state if it doesn't exist
 if "observation_text" not in st.session_state:
     st.session_state["observation_text"] = ""
