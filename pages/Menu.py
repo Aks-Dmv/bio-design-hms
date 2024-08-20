@@ -92,7 +92,7 @@ st.markdown("---")
 col1, col2, col3 = st.columns([3, 1, 1])
 with col3:
     if st.button("Log Out"):
-        switch_page("")
+        switch_page(" ")
 
 #    if st.button("Go to Main"):
 #        st.markdown('<meta http-equiv="refresh" content="0; url=./" />', unsafe_allow_html=True)
