@@ -465,11 +465,10 @@ st.markdown("---")
 
 
 # st.markdown("---")
-
-# Apply custom CSS for a specific button with a unique style
+# Apply custom CSS to make the button blue
 st.markdown("""
     <style>
-    .blue-button {
+    div.stButton > button {
         background-color: #365980;
         color: white;
         font-size: 16px;
@@ -477,13 +476,15 @@ st.markdown("""
         border: none;
         border-radius: 5px;
     }
-    .blue-button:hover {
+    div.stButton > button:hover {
         background-color: #2c4a70;
         color: white;
     }
     </style>
     """, unsafe_allow_html=True)
 
-# Create a blue button with the custom class
-if st.markdown('<button class="blue-button" onclick="window.location.href=\'/?page=main_menu\'">Back to Main Menu</button>', unsafe_allow_html=True):
+
+
+# Create a button using Streamlit's native functionality
+if st.button("Back to Main Menu"):
     switch_page("main_menu")
