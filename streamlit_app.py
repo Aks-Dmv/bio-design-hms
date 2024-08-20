@@ -72,7 +72,7 @@ with col1:
                 st.rerun()
         st.error("Try again please")
 
- with col2:
+with col2:
     if st.button("New Licenses"):
         st.info("New licenses coming soon!")
 
