@@ -351,12 +351,13 @@ if "observation_text" not in st.session_state:
 def clear_text():
     st.session_state["observation_text"] = ""
 
-# Create columns to align the buttons
-col1, col2, col3 = st.columns([1, 1, 2])  # Adjust column widths as needed
 
 # Observation Text Area
 st.write("Add Your Observation:")
 observation_text = st.text_area("Observation", value=st.session_state["observation_text"], height=200, key="observation_text")
+
+# Create columns to align the buttons
+col1, col2, col3 = st.columns([2, 1, 2])  # Adjust column widths as needed
 
 with col3:
     # Button to Clear the Observation Text Area
