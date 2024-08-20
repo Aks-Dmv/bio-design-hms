@@ -125,42 +125,27 @@ st.markdown("---")
 # Spacer to push the button to the bottom
 
 # Add a spacer to push the button to the bottom of the page
-st.write("\n" * 50)
-# Add custom CSS for a larger button
+st.write(" " * 50)
+# Apply custom CSS to make the button blue
 st.markdown("""
-    
-    
     <style>
-    .main {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-    .big-button-container {
-        display: flex;
-        justify-content: center;
-    }
-    .big-button {
-        font-size: 20px;
-        padding: 10px 60px;
-        background-color: #365980; /* blueish color */
+    div.stButton > button {
+        background-color: #365980;
         color: white;
+        font-size: 16px;
+        padding: 10px 20px;
         border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        text-align: center;
+        border-radius: 5px;
     }
-    .big-button:hover {
-        background-color: #c2c2c2; /* Grey */
+    div.stButton > button:hover {
+        background-color: #2c4a70;
+        color: white;
     }
     </style>
     """, unsafe_allow_html=True)
 
-# Create a container to hold the button with the custom class
-st.markdown("""
-    <div class="big-button-container">
-        <button class="big-button" onclick="window.location.href='/?page=main_menu'">Back to Main Menu</button>
-    </div>
-    """, unsafe_allow_html=True)
 
+
+# Create a button using Streamlit's native functionality
+if st.button("Back to Main Menu"):
+    switch_page("main_menu")
