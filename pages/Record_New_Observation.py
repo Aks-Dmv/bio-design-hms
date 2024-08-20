@@ -343,9 +343,6 @@ with col3:
 
 # ######
 
-# Button for voice input (currently as a placeholder)
-if st.button("🎤 Record Observation (Coming Soon)"):
-    st.info("Voice recording feature coming soon!")
 
 # Initialize the observation text in session state if it doesn't exist
 if "observation_text" not in st.session_state:
@@ -364,6 +361,10 @@ def clear_text():
 
 # Add Your Observation Text with larger font size
 st.markdown("<h4 style='font-size:20px;'>Add Your Observation:</h4>", unsafe_allow_html=True)
+
+# Button for voice input (currently as a placeholder)
+if st.button("🎤 Record Observation (Coming Soon)"):
+    st.info("Voice recording feature coming soon!")
 
 # Observation Text Area
 observation_text = st.text_area("Observation:", value=st.session_state["observation_text"], height=200, key="observation_text")
