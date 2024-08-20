@@ -91,13 +91,20 @@ if prompt := st.chat_input("What would you like to ask?"):
     related_observations = db.similarity_search(prompt, k=10)
 
     question_prompt = PromptTemplate.from_template(
-        """
-        You are a helpful assistant trained in the Stanford biodesign process that can answer questions about given observations of medical procedures. 
-        You have to use the related observations to help answer the question. Cite the observations with relevant quotes to back your answer. The format for citations are \"quote\"(author, date like MM-DD-YY).
+        # """
+        # You are a helpful assistant trained in the Stanford Biodesign process that can answer questions about given observations of health care procedures. 
+        # You have to use the related observations to help answer the question. Cite the observations with relevant quotes and observation IDs to back your answer.
+        
+        # Question: {question}
+        # Related Observations: {related_observations}
+        # """
+                """
+        You are a helpful assistant trained in the Stanford Biodesign process that can answer questions about given observations of health care procedures. 
+        You have to use the related observations to help answer the question. Cite the observations with relevant quotes and observation IDs to back your answer.
         
         Question: {question}
-        Related Observations: {related_observations}
-        """
+        Answer: {related_observations}
+         """
     )
     
     observation_chat_chain = (
