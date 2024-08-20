@@ -78,7 +78,7 @@ with col2:
         switch_page("enhance_observation")
 
     if st.button("❓ Ask the team's Observations"):
-        switch_page("ask_observations")
+        switch_page("Ask_the_Observations")
 
     if st.button("📊 Glossary"):
         switch_page("glossary")
