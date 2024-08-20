@@ -236,7 +236,6 @@ def clear_observation():
     st.session_state['observation'] = ""
     st.session_state['observation_summary'] = ""
     st.session_state['result'] = ""
-    st.session_state['error'] = ""
     update_observation_id()
 
 import streamlit as st
