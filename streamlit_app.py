@@ -83,6 +83,10 @@ if __name__ == "__main__":
         st.session_state["login_status"] = "not_logged_in"
 
     if st.session_state["login_status"] == "success":
+        # st.query_params(page="main_menu")
+        # st.query_params[''] = "main_menu"
+        # # st.page_link("pages/main_menu.py")
+        # st.rerun()
         switch_page("main_menu")
     else:
         main()
