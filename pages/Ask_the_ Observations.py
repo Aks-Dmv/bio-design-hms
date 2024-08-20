@@ -92,7 +92,8 @@ if prompt := st.chat_input("What would you like to ask?"):
 
     question_prompt = PromptTemplate.from_template(
         """
-        You are a helpful assistant trained in the Stanford biodesign process that can answer questions about observations of medical procedures. You can use the related observations to help answer the question.
+        You are a helpful assistant trained in the Stanford biodesign process that can answer questions about given observations of medical procedures. 
+        You have to use the related observations to help answer the question. Cite the observations with relevant quotes to back your answer.
         
         Question: {question}
         Related Observations: {related_observations}
@@ -112,6 +113,10 @@ if prompt := st.chat_input("What would you like to ask?"):
     # Display the response
     with st.chat_message("assistant"):
         st.markdown(output)
+        st.markdown("---")
+        st.markdown("### Related Observations")
+        for i, observation in enumerate(related_observations):
+            st.write(f"{i+1}. {observation}")
 
     # Store chat in the current sheet
     st.session_state.chat_sheet.append_row([st.session_state.messages[-2]['content'], st.session_state.messages[-1]['content']])

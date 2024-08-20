@@ -185,7 +185,7 @@ def embedObservation(observer, observation, observation_summary, observation_dat
             pinecone_api_key=st.secrets["pinecone-keys"]["api_key"],
         )
     
-    db.add_texts([observation, f"observation id: {observation_id}"], metadatas=[{'observer': observer}])
+    db.add_texts([observation], metadatas=[{'observer': observer, 'observation_date': observation_date, 'observation_id': observation_id}])
 
     parsed_observation = parseObservation(observation)
 
