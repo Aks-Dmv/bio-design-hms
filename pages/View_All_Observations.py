@@ -33,7 +33,7 @@ st.markdown("---")
 # st.set_page_config(page_title="View Observations Dataset", page_icon="📊")
 
 #st.markdown("# Go to the Observations Dataset")
-st.markdown("<p style='font-size:30px;'>Go to the Observations Dataset</p>", unsafe_allow_html=True)
+st.markdown("<h3 style='font-size:25px;'>Go to the Observations Dataset</p>", unsafe_allow_html=True)
 
 
 st.markdown("""
