@@ -369,7 +369,7 @@ if st.button("🎤 Record Observation (Coming Soon)"):
     st.info("Voice recording feature coming soon!")
 
 # Observation Text Area
-observation_text = st.text_area("Observation:", value=st.session_state["observation"], height=200, key="observation")
+observation_text = st.text_area("Observation:", value=st.session_state["observation"], height=200)
 
 
 # Create columns to align the buttons
@@ -416,24 +416,19 @@ with col1:
         st.session_state['result'] = extractObservationFeatures(st.session_state['observation'])
         st.session_state['observation_summary']  = generateObservationSummary(st.session_state['observation'])
     
-    if st.session_state['observation_summary'] != "":
-        st.session_state['observation_summary'] = st.text_area("Generated Summary (editable):", value=st.session_state['observation_summary'], height=50)
-    
-    # st.write(f":green[{st.session_state['result']}]")
-    st.markdown(st.session_state['result'], unsafe_allow_html=True)
-    
-    if st.session_state['rerun']:
-        time.sleep(3)
-        clear_observation()
-        st.session_state['rerun'] = False
-        st.rerun()
+if st.session_state['observation_summary'] != "":
+    st.session_state['observation_summary'] = st.text_area("Generated Summary (editable):", value=st.session_state['observation_summary'], height=50)
+
+# st.write(f":green[{st.session_state['result']}]")
+st.markdown(st.session_state['result'], unsafe_allow_html=True)
+
+if st.session_state['rerun']:
+    time.sleep(3)
+    clear_observation()
+    st.session_state['rerun'] = False
+    st.rerun()
     
     ##########
-
-with col2:
-    pass
-
-st.markdown("---")
 
 if st.button("Add Observation to Team Record", disabled=st.session_state['observation_summary'] == ""):
     # st.session_state['observation_summary']  = generateObservationSummary(st.session_state['observation'])
