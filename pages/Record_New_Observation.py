@@ -377,28 +377,8 @@ with col3:
     #     </style>
     #     """, unsafe_allow_html=True)
 
-    clear_button_style = """
-    <style>
-    .clear-button {
-        background-color: red;
-        color: white;
-        font-size: 16px;
-        padding: 10px 20px;
-        border-radius: 8px;
-        border: none;
-        cursor: pointer;
-    }
-    .clear-button:hover {
-        background-color: darkred;
-    }
-    </style>
-    """
-    st.markdown(clear_button_style, unsafe_allow_html=True)
-
     # Button to Clear the Observation Text Area
     st.button("Clear Observation", on_click=clear_text)
-
-    
     
     # Container for result display
     result_container = st.empty()
