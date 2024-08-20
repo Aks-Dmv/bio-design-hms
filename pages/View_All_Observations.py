@@ -119,27 +119,25 @@ st.markdown("---")
 import streamlit as st
 
 # Create a container to hold the button with the custom class
+# Apply custom CSS to make the button blue
 st.markdown("""
     <style>
-    .big-button-container {
-        display: flex;
-        justify-content: center;
-    }
-    .big-button {
-        font-size: 20px;
-        padding: 10px 60px;
-        background-color: #365980; /* blueish color */
+    div.stButton > button {
+        background-color: #365980;
         color: white;
+        font-size: 16px;
+        padding: 10px 20px;
         border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        text-align: center;
+        border-radius: 5px;
     }
-    .big-button:hover {
-        background-color: #c2c2c2; /* Grey */
+    div.stButton > button:hover {
+        background-color: #2c4a70;
+        color: white;
     }
     </style>
     """, unsafe_allow_html=True)
+
+
 
 # Create a button using Streamlit's native functionality
 if st.button("Back to Main Menu"):
