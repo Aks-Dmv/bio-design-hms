@@ -395,7 +395,6 @@ with col3:
     """
     st.markdown(clear_button_style, unsafe_allow_html=True)
 
-
     # Button to Clear the Observation Text Area
     st.button("Clear Observation", on_click=clear_text)
 
