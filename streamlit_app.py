@@ -125,7 +125,7 @@ if __name__ == "__main__":
         # st.query_params[''] = "main_menu"
         # # st.page_link("pages/main_menu.py")
         # st.rerun()
-        switch_page("Menu")
+        switch_page("main_menu")
     else:
         main()
 
