@@ -336,9 +336,24 @@ with col3:
 # Textbox for name input
 #observer = st.selectbox("Observer", ["Ana", "Bridget"])
 
-# Text area for observation input
-st.session_state['observation'] = st.text_area("Add Your Observation", value=st.session_state['observation'], placeholder="Enter your observation...", height=200)
+# ######
 
+# # Text area for observation input
+# st.session_state['observation'] = st.text_area("Add Your Observation", value=st.session_state['observation'], placeholder="Enter your observation...", height=200)
+
+# ######
+
+# Initialize the observation text in session state if it doesn't exist
+if "observation_text" not in st.session_state:
+    st.session_state["observation_text"] = ""
+
+# Function to clear the text area
+def clear_text():
+    st.session_state["observation_text"] = ""
+
+# Observation Text Area
+st.write("Add Your Observation:")
+observation_text = st.text_area("Observation", value=st.session_state["observation_text"], height=200, key="observation_text")
 
 # Button to Clear the Observation Text Area
 st.button("Clear Observation", on_click=clear_text)
